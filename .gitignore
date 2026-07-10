@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.env
+.env.*
+.venv/
+venv/
+env/
+conda-env/
+
+# Credentials and private files
+client_secret*.json
+credentials*.json
+token*.json
+*.pem
+*.key
+
+# Isaac Lab / reinforcement-learning outputs
+logs/
+outputs/
+runs/
+checkpoints/
+wandb/
+tensorboard/
+videos/
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+
+# Jupyter
+.ipynb checkpoints/
+
+# Operation-system files
+Thumbs.b
+Desktop.ini
+.DS_Store
+
+# Temporary CAD and editor files
+~$*
+*.tmp
+*.bak
+*.autosave
+
+# General logs and caches
+*.log
+.cache/
