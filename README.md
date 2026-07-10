@@ -1,5 +1,5 @@
-Project Geronomino
-PASS THE CLANKER
+Project: Geronomino
+A robot that is trained in a messy environment, navigating in destroyed buildings in small crevices and detecting any humans who are still inside after the destruction.
 
-Kush John Caleb
+Contributors: Kush John Caleb
 
