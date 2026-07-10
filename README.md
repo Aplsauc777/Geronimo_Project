@@ -1,5 +1,5 @@
-Title of project
-Description of project
+Project Geronomino
+PASS THE CLANKER
 
-Contributors
+Kush John Caleb
 
