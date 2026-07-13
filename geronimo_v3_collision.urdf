@@ -1,0 +1,2786 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="hexapod_robot_v3">
+    <link name="2xusb_2_0_port">
+        <inertial>
+            <mass value="2.58868e-06" />
+            <origin xyz="-0.00515423 -0.00440784 0.00801602" rpy="0 -0 0" />
+            <inertia ixx="8.95462e-11" ixy="5.05199e-14" ixz="-1.08923e-12" iyy="1.0917e-10" iyz="6.97588e-14" izz="9.80134e-11" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04074 -0.02341 -0.0016" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/_2xUSB_2_0_PORT.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.647059_0.647059_0.647059_0.000000_0.000000">
+                <color rgba="0.647059 0.647059 0.647059 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04074 -0.02341 -0.0016" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/_2xUSB_2_0_PORT.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="arm2_moment_v2">
+        <inertial>
+            <mass value="1.13071e-05" />
+            <origin xyz="-0.0131083 -0.0027147 0.000195155" rpy="0 -0 0.204093" />
+            <inertia ixx="1.21914e-09" ixy="-1.12129e-10" ixz="-4.25073e-12" iyy="1.73639e-09" iyz="-9.4265e-13" izz="2.75772e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="arm2_moment_v2_1">
+        <inertial>
+            <mass value="1.13071e-05" />
+            <origin xyz="-0.0131083 -0.0027147 0.000195155" rpy="0 -0 0.204093" />
+            <inertia ixx="1.21914e-09" ixy="-1.12129e-10" ixz="-4.25073e-12" iyy="1.73639e-09" iyz="-9.4265e-13" izz="2.75772e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="arm2_moment_v2_2">
+        <inertial>
+            <mass value="1.13071e-05" />
+            <origin xyz="-0.0131083 -0.0027147 0.000195155" rpy="0 -0 0.204093" />
+            <inertia ixx="1.21914e-09" ixy="-1.12129e-10" ixz="-4.25073e-12" iyy="1.73639e-09" iyz="-9.4265e-13" izz="2.75772e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="arm2_moment_v2_3">
+        <inertial>
+            <mass value="1.13071e-05" />
+            <origin xyz="-0.0131083 -0.0027147 0.000195155" rpy="0 -0 0.204093" />
+            <inertia ixx="1.21914e-09" ixy="-1.12129e-10" ixz="-4.25073e-12" iyy="1.73639e-09" iyz="-9.4265e-13" izz="2.75772e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="arm2_moment_v2_4">
+        <inertial>
+            <mass value="1.13071e-05" />
+            <origin xyz="-0.0131083 -0.0027147 0.000195155" rpy="0 -0 0.204093" />
+            <inertia ixx="1.21914e-09" ixy="-1.12129e-10" ixz="-4.25073e-12" iyy="1.73639e-09" iyz="-9.4265e-13" izz="2.75772e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="arm2_moment_v2_5">
+        <inertial>
+            <mass value="1.13071e-05" />
+            <origin xyz="-0.0131083 -0.0027147 0.000195155" rpy="0 -0 0.204093" />
+            <inertia ixx="1.21914e-09" ixy="-1.12129e-10" ixz="-4.25073e-12" iyy="1.73639e-09" iyz="-9.4265e-13" izz="2.75772e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0.001" rpy="0 -0 0.204093" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Arm2_moment_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="baterry">
+        <inertial>
+            <mass value="0.000188945" />
+            <origin xyz="-0.0240582 -4.78026e-05 0.000374107" rpy="0 -0 0" />
+            <inertia ixx="3.26166e-07" ixy="-1.25923e-10" ixz="9.85488e-10" iyy="3.50049e-07" iyz="8.09508e-10" izz="4.8679e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.048 -0.014 -0.07" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/baterry.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.866667_0.486275_0.058824_0.000000_0.000000">
+                <color rgba="0.866667 0.486275 0.0588235 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.048 -0.014 -0.07" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/baterry.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="body_lower_v2">
+        <inertial>
+            <mass value="0.000471869" />
+            <origin xyz="-0.000383948 6.44458e-05 0.0133913" rpy="0 -0 0" />
+            <inertia ixx="1.44388e-06" ixy="-1.46262e-09" ixz="2.52579e-10" iyy="1.44695e-06" iyz="-5.77804e-10" izz="2.55025e-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/body_lower_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.188235_0.529412_0.890196_0.000000_0.000000">
+                <color rgba="0.188235 0.529412 0.890196 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 0 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/body_lower_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="body_upper_v3">
+        <inertial>
+            <mass value="0.000269003" />
+            <origin xyz="0.0566416 0.0951179 0.0377056" rpy="0 -0 0" />
+            <inertia ixx="9.3006e-07" ixy="-1.17323e-09" ixz="-5.99526e-08" iyy="9.94305e-07" iyz="-1.00788e-09" izz="1.67829e-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0.0548483 0.095 0.08" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/body_upper_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.0548483 0.095 0.08" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/body_upper_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="bottom_cap">
+        <inertial>
+            <mass value="5.25199e-06" />
+            <origin xyz="-0.00892427 -0.00679037 -0.001" rpy="0 -0 0" />
+            <inertia ixx="1.11125e-09" ixy="0" ixz="0" iyy="1.11016e-09" iyz="0" izz="2.21791e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.00892427 -0.00674903 0.035" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Bottom_Cap.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.647059_0.647059_0.647059_0.000000_0.000000">
+                <color rgba="0.647059 0.647059 0.647059 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.00892427 -0.00674903 0.035" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Bottom_Cap.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="cap">
+        <inertial>
+            <mass value="1.00033e-05" />
+            <origin xyz="-2.21919e-14 -0.000185208 0.00632558" rpy="0 -0 0" />
+            <inertia ixx="7.52734e-10" ixy="0" ixz="0" iyy="7.44116e-10" iyz="2.91757e-12" izz="1.15548e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 -2.42287e-18 -0.059432" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Cap.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.498039_0.498039_0.498039_0.000000_0.000000">
+                <color rgba="0.498039 0.498039 0.498039 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 -2.42287e-18 -0.059432" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Cap.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_a">
+        <inertial>
+            <mass value="1.91892e-05" />
+            <origin xyz="-0.0326792 -0.00584661 -0.00214313" rpy="0 -0 0" />
+            <inertia ixx="4.43421e-09" ixy="-3.21573e-10" ixz="-3.59345e-10" iyy="9.61362e-09" iyz="-1.02172e-09" izz="1.10098e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_a_1">
+        <inertial>
+            <mass value="1.91892e-05" />
+            <origin xyz="-0.0326792 -0.00584661 -0.00214313" rpy="0 -0 0" />
+            <inertia ixx="4.43421e-09" ixy="-3.21573e-10" ixz="-3.59345e-10" iyy="9.61362e-09" iyz="-1.02172e-09" izz="1.10098e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_a_2">
+        <inertial>
+            <mass value="1.91892e-05" />
+            <origin xyz="-0.0326792 -0.00584661 -0.00214313" rpy="0 -0 0" />
+            <inertia ixx="4.43421e-09" ixy="-3.21573e-10" ixz="-3.59345e-10" iyy="9.61362e-09" iyz="-1.02172e-09" izz="1.10098e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_a_3">
+        <inertial>
+            <mass value="1.91892e-05" />
+            <origin xyz="-0.0326792 -0.00584661 -0.00214313" rpy="0 -0 0" />
+            <inertia ixx="4.43421e-09" ixy="-3.21573e-10" ixz="-3.59345e-10" iyy="9.61362e-09" iyz="-1.02172e-09" izz="1.10098e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_a_4">
+        <inertial>
+            <mass value="1.91892e-05" />
+            <origin xyz="-0.0326792 -0.00584661 -0.00214313" rpy="0 -0 0" />
+            <inertia ixx="4.43421e-09" ixy="-3.21573e-10" ixz="-3.59345e-10" iyy="9.61362e-09" iyz="-1.02172e-09" izz="1.10098e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_a_5">
+        <inertial>
+            <mass value="1.91892e-05" />
+            <origin xyz="-0.0326792 -0.00584661 -0.00214313" rpy="0 -0 0" />
+            <inertia ixx="4.43421e-09" ixy="-3.21573e-10" ixz="-3.59345e-10" iyy="9.61362e-09" iyz="-1.02172e-09" izz="1.10098e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.06225 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_A.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_b">
+        <inertial>
+            <mass value="1.58958e-05" />
+            <origin xyz="-0.00054328 -0.01825 0.00600374" rpy="0 -0 0" />
+            <inertia ixx="3.82209e-09" ixy="0" ixz="7.93818e-11" iyy="4.92407e-09" iyz="0" izz="8.34311e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_b_1">
+        <inertial>
+            <mass value="1.58958e-05" />
+            <origin xyz="-0.00054328 -0.01825 0.00600374" rpy="0 -0 0" />
+            <inertia ixx="3.82209e-09" ixy="0" ixz="7.93818e-11" iyy="4.92407e-09" iyz="0" izz="8.34311e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_b_2">
+        <inertial>
+            <mass value="1.58958e-05" />
+            <origin xyz="-0.00054328 -0.01825 0.00600374" rpy="0 -0 0" />
+            <inertia ixx="3.82209e-09" ixy="0" ixz="7.93818e-11" iyy="4.92407e-09" iyz="0" izz="8.34311e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_b_3">
+        <inertial>
+            <mass value="1.58958e-05" />
+            <origin xyz="-0.00054328 -0.01825 0.00600374" rpy="0 -0 0" />
+            <inertia ixx="3.82209e-09" ixy="0" ixz="7.93818e-11" iyy="4.92407e-09" iyz="0" izz="8.34311e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_b_4">
+        <inertial>
+            <mass value="1.58958e-05" />
+            <origin xyz="-0.00054328 -0.01825 0.00600374" rpy="0 -0 0" />
+            <inertia ixx="3.82209e-09" ixy="0" ixz="7.93818e-11" iyy="4.92407e-09" iyz="0" izz="8.34311e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case1_b_5">
+        <inertial>
+            <mass value="1.58958e-05" />
+            <origin xyz="-0.00054328 -0.01825 0.00600374" rpy="0 -0 0" />
+            <inertia ixx="3.82209e-09" ixy="0" ixz="7.93818e-11" iyy="4.92407e-09" iyz="0" izz="8.34311e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.028 -0.02325 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case1_B.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_a_v2">
+        <inertial>
+            <mass value="3.96219e-05" />
+            <origin xyz="-0.00459019 0.0340811 0.00475037" rpy="0 -0 0" />
+            <inertia ixx="2.35599e-08" ixy="-1.29595e-08" ixz="3.26485e-09" iyy="2.51745e-08" iyz="2.949e-09" izz="3.81329e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_a_v2_1">
+        <inertial>
+            <mass value="3.96219e-05" />
+            <origin xyz="-0.00459019 0.0340811 0.00475037" rpy="0 -0 0" />
+            <inertia ixx="2.35599e-08" ixy="-1.29595e-08" ixz="3.26485e-09" iyy="2.51745e-08" iyz="2.949e-09" izz="3.81329e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_a_v2_2">
+        <inertial>
+            <mass value="3.96219e-05" />
+            <origin xyz="-0.00459019 0.0340811 0.00475037" rpy="0 -0 0" />
+            <inertia ixx="2.35599e-08" ixy="-1.29595e-08" ixz="3.26485e-09" iyy="2.51745e-08" iyz="2.949e-09" izz="3.81329e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_a_v2_3">
+        <inertial>
+            <mass value="3.96219e-05" />
+            <origin xyz="-0.00459019 0.0340811 0.00475037" rpy="0 -0 0" />
+            <inertia ixx="2.35599e-08" ixy="-1.29595e-08" ixz="3.26485e-09" iyy="2.51745e-08" iyz="2.949e-09" izz="3.81329e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_a_v2_4">
+        <inertial>
+            <mass value="3.96219e-05" />
+            <origin xyz="-0.00459019 0.0340811 0.00475037" rpy="0 -0 0" />
+            <inertia ixx="2.35599e-08" ixy="-1.29595e-08" ixz="3.26485e-09" iyy="2.51745e-08" iyz="2.949e-09" izz="3.81329e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_a_v2_5">
+        <inertial>
+            <mass value="3.96219e-05" />
+            <origin xyz="-0.00459019 0.0340811 0.00475037" rpy="0 -0 0" />
+            <inertia ixx="2.35599e-08" ixy="-1.29595e-08" ixz="3.26485e-09" iyy="2.51745e-08" iyz="2.949e-09" izz="3.81329e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04825 0.01375 0.013" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_A_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_b_v2">
+        <inertial>
+            <mass value="1.42542e-05" />
+            <origin xyz="-0.015325 0.0183518 0.000630878" rpy="0 -0 0" />
+            <inertia ixx="2.38894e-09" ixy="8.94555e-11" ixz="7.36553e-11" iyy="5.24197e-09" iyz="6.03396e-13" izz="7.26003e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_b_v2_1">
+        <inertial>
+            <mass value="1.42542e-05" />
+            <origin xyz="-0.015325 0.0183518 0.000630878" rpy="0 -0 0" />
+            <inertia ixx="2.38894e-09" ixy="8.94555e-11" ixz="7.36553e-11" iyy="5.24197e-09" iyz="6.03396e-13" izz="7.26003e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_b_v2_2">
+        <inertial>
+            <mass value="1.42542e-05" />
+            <origin xyz="-0.015325 0.0183518 0.000630878" rpy="0 -0 0" />
+            <inertia ixx="2.38894e-09" ixy="8.94555e-11" ixz="7.36553e-11" iyy="5.24197e-09" iyz="6.03396e-13" izz="7.26003e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_b_v2_3">
+        <inertial>
+            <mass value="1.42542e-05" />
+            <origin xyz="-0.015325 0.0183518 0.000630878" rpy="0 -0 0" />
+            <inertia ixx="2.38894e-09" ixy="8.94555e-11" ixz="7.36553e-11" iyy="5.24197e-09" iyz="6.03396e-13" izz="7.26003e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_b_v2_4">
+        <inertial>
+            <mass value="1.42542e-05" />
+            <origin xyz="-0.015325 0.0183518 0.000630878" rpy="0 -0 0" />
+            <inertia ixx="2.38894e-09" ixy="8.94555e-11" ixz="7.36553e-11" iyy="5.24197e-09" iyz="6.03396e-13" izz="7.26003e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case2_b_v2_5">
+        <inertial>
+            <mass value="1.42542e-05" />
+            <origin xyz="-0.015325 0.0183518 0.000630878" rpy="0 -0 0" />
+            <inertia ixx="2.38894e-09" ixy="8.94555e-11" ixz="7.36553e-11" iyy="5.24197e-09" iyz="6.03396e-13" izz="7.26003e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04125 0.01325 -0.0055" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case2_B_v2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_a_cpy">
+        <inertial>
+            <mass value="2.08272e-05" />
+            <origin xyz="0.00803369 0.00561319 0.0208406" rpy="0 -0 0" />
+            <inertia ixx="5.03659e-09" ixy="-7.10079e-10" ixz="-7.72451e-10" iyy="1.2731e-08" iyz="-1.07598e-09" izz="1.45964e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_a_cpy_1">
+        <inertial>
+            <mass value="2.08272e-05" />
+            <origin xyz="0.00803369 0.00561319 0.0208406" rpy="0 -0 0" />
+            <inertia ixx="5.03659e-09" ixy="-7.10079e-10" ixz="-7.72451e-10" iyy="1.2731e-08" iyz="-1.07598e-09" izz="1.45964e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_a_cpy_2">
+        <inertial>
+            <mass value="2.08272e-05" />
+            <origin xyz="0.00803369 0.00561319 0.0208406" rpy="0 -0 0" />
+            <inertia ixx="5.03659e-09" ixy="-7.10079e-10" ixz="-7.72451e-10" iyy="1.2731e-08" iyz="-1.07598e-09" izz="1.45964e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_a_cpy_3">
+        <inertial>
+            <mass value="2.08272e-05" />
+            <origin xyz="0.00803369 0.00561319 0.0208406" rpy="0 -0 0" />
+            <inertia ixx="5.03659e-09" ixy="-7.10079e-10" ixz="-7.72451e-10" iyy="1.2731e-08" iyz="-1.07598e-09" izz="1.45964e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_a_cpy_4">
+        <inertial>
+            <mass value="2.08272e-05" />
+            <origin xyz="0.00803369 0.00561319 0.0208406" rpy="0 -0 0" />
+            <inertia ixx="5.03659e-09" ixy="-7.10079e-10" ixz="-7.72451e-10" iyy="1.2731e-08" iyz="-1.07598e-09" izz="1.45964e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_a_cpy_5">
+        <inertial>
+            <mass value="2.08272e-05" />
+            <origin xyz="0.00803369 0.00561319 0.0208406" rpy="0 -0 0" />
+            <inertia ixx="5.03659e-09" ixy="-7.10079e-10" ixz="-7.72451e-10" iyy="1.2731e-08" iyz="-1.07598e-09" izz="1.45964e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 0.006 0.0225" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_A_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_b_cpy">
+        <inertial>
+            <mass value="1.69917e-05" />
+            <origin xyz="0.00936807 -8.67362e-19 -0.00416387" rpy="0 -0 0" />
+            <inertia ixx="2.98093e-09" ixy="0" ixz="3.02933e-10" iyy="9.49638e-09" iyz="0" izz="1.20592e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_b_cpy_1">
+        <inertial>
+            <mass value="1.69917e-05" />
+            <origin xyz="0.00936807 -8.67362e-19 -0.00416387" rpy="0 -0 0" />
+            <inertia ixx="2.98093e-09" ixy="0" ixz="3.02933e-10" iyy="9.49638e-09" iyz="0" izz="1.20592e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_b_cpy_2">
+        <inertial>
+            <mass value="1.69917e-05" />
+            <origin xyz="0.00936807 -8.67362e-19 -0.00416387" rpy="0 -0 0" />
+            <inertia ixx="2.98093e-09" ixy="0" ixz="3.02933e-10" iyy="9.49638e-09" iyz="0" izz="1.20592e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_b_cpy_3">
+        <inertial>
+            <mass value="1.69917e-05" />
+            <origin xyz="0.00936807 -8.67362e-19 -0.00416387" rpy="0 -0 0" />
+            <inertia ixx="2.98093e-09" ixy="0" ixz="3.02933e-10" iyy="9.49638e-09" iyz="0" izz="1.20592e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_b_cpy_4">
+        <inertial>
+            <mass value="1.69917e-05" />
+            <origin xyz="0.00936807 -8.67362e-19 -0.00416387" rpy="0 -0 0" />
+            <inertia ixx="2.98093e-09" ixy="0" ixz="3.02933e-10" iyy="9.49638e-09" iyz="0" izz="1.20592e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case3_b_cpy_5">
+        <inertial>
+            <mass value="1.69917e-05" />
+            <origin xyz="0.00936807 -8.67362e-19 -0.00416387" rpy="0 -0 0" />
+            <inertia ixx="2.98093e-09" ixy="0" ixz="3.02933e-10" iyy="9.49638e-09" iyz="0" izz="1.20592e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.025 -0.005 -0.0098" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case3_B_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_1">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_10">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_11">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_12">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_13">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_14">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_15">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_16">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_17">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_2">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_3">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_4">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_5">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_6">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_7">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_8">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="case_cpy_9">
+        <inertial>
+            <mass value="1.36058e-05" />
+            <origin xyz="-0.00215909 0.0105562 0.0104386" rpy="0 -0 0" />
+            <inertia ixx="1.53608e-09" ixy="-7.93833e-12" ixz="9.61427e-11" iyy="7.5882e-09" iyz="7.13937e-11" izz="7.23048e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.050980_0.615686_0.050980_0.000000_0.000000">
+                <color rgba="0.0509804 0.615686 0.0509804 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02325 9.57567e-18 0.0285" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Case_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="connect_v1">
+        <inertial>
+            <mass value="1.60411e-05" />
+            <origin xyz="-0.00709155 -0.0278027 0.00449701" rpy="0 -0 0" />
+            <inertia ixx="4.11613e-09" ixy="1.35189e-09" ixz="-1.09065e-09" iyy="1.10206e-08" iyz="2.42804e-10" izz="1.43708e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.019 -0.0245 0.0001" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/CONNECT_V1.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.972549_0.529412_0.003922_0.000000_0.000000">
+                <color rgba="0.972549 0.529412 0.00392157 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.019 -0.0245 0.0001" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/CONNECT_V1.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="gobilda_servo">
+        <inertial>
+            <mass value="0.0859147" />
+            <origin xyz="0.005 0.0241678 -0.0101925" rpy="0 -0 0" />
+            <inertia ixx="2.30186e-05" ixy="0" ixz="0" iyy="1.36866e-05" iyz="9.17675e-09" izz="1.49882e-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0.005 0.024 -0.0026" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Gobilda_Servo.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.498039_0.498039_0.498039_0.000000_0.000000">
+                <color rgba="0.498039 0.498039 0.498039 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.005 0.024 -0.0026" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Gobilda_Servo.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="legend_2">
+        <inertial>
+            <mass value="4.99339e-05" />
+            <origin xyz="0.0192559 -0.0155781 0.0600244" rpy="0 -0 0" />
+            <inertia ixx="1.22369e-07" ixy="1.2324e-11" ixz="-2.4214e-11" iyy="1.08667e-07" iyz="3.71685e-08" izz="2.57094e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="legend_2_1">
+        <inertial>
+            <mass value="4.99339e-05" />
+            <origin xyz="0.0192559 -0.0155781 0.0600244" rpy="0 -0 0" />
+            <inertia ixx="1.22369e-07" ixy="1.2324e-11" ixz="-2.4214e-11" iyy="1.08667e-07" iyz="3.71685e-08" izz="2.57094e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="legend_2_2">
+        <inertial>
+            <mass value="4.99339e-05" />
+            <origin xyz="0.0192559 -0.0155781 0.0600244" rpy="0 -0 0" />
+            <inertia ixx="1.22369e-07" ixy="1.2324e-11" ixz="-2.4214e-11" iyy="1.08667e-07" iyz="3.71685e-08" izz="2.57094e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="legend_2_3">
+        <inertial>
+            <mass value="4.99339e-05" />
+            <origin xyz="0.0192559 -0.0155781 0.0600244" rpy="0 -0 0" />
+            <inertia ixx="1.22369e-07" ixy="1.2324e-11" ixz="-2.4214e-11" iyy="1.08667e-07" iyz="3.71685e-08" izz="2.57094e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="legend_2_4">
+        <inertial>
+            <mass value="4.99339e-05" />
+            <origin xyz="0.0192559 -0.0155781 0.0600244" rpy="0 -0 0" />
+            <inertia ixx="1.22369e-07" ixy="1.2324e-11" ixz="-2.4214e-11" iyy="1.08667e-07" iyz="3.71685e-08" izz="2.57094e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="legend_2_5">
+        <inertial>
+            <mass value="4.99339e-05" />
+            <origin xyz="0.0192559 -0.0155781 0.0600244" rpy="0 -0 0" />
+            <inertia ixx="1.22369e-07" ixy="1.2324e-11" ixz="-2.4214e-11" iyy="1.08667e-07" iyz="3.71685e-08" izz="2.57094e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0.004 -0.005 0" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/LegEnd_2.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="part_6">
+        <inertial>
+            <mass value="4.90443e-05" />
+            <origin xyz="-6.8474e-09 0.00369604 0.0214941" rpy="0 -0 0" />
+            <inertia ixx="3.95437e-08" ixy="-2.62465e-15" ixz="1.35769e-14" iyy="3.99447e-08" iyz="-1.00699e-09" izz="8.97859e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 -1.04095e-18 0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Part_6.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.917647_0.917647_0.917647_0.000000_0.000000">
+                <color rgba="0.917647 0.917647 0.917647 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="0 -1.04095e-18 0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Part_6.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="root" />
+    <link name="rpi_ai_camera">
+        <inertial>
+            <mass value="2.30763e-06" />
+            <origin xyz="-0.010501 -0.00168507 -0.013347" rpy="0 -0 0" />
+            <inertia ixx="1.15545e-10" ixy="0" ixz="-2.13888e-15" iyy="1.65923e-10" iyz="1.39852e-11" izz="8.11021e-11" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0105012 0 -0.055932" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/RPi_AI_Camera.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.301961_0.301961_0.301961_0.000000_0.000000">
+                <color rgba="0.301961 0.301961 0.301961 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0105012 0 -0.055932" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/RPi_AI_Camera.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="0.00984453 -0.0256531 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_1">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_10">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="0.00984453 -0.0256531 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_11">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_12">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_13">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_14">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="0.00984453 -0.0256531 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_15">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="0.00984453 -0.0256531 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_16">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_17">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_2">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_3">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_4">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_5">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="0.00984453 -0.0256531 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_6">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_7">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_8">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="0.00984453 -0.0256531 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.01 -0.0465 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="servo_cpy_9">
+        <inertial>
+            <mass value="3.39559e-05" />
+            <origin xyz="-0.000155466 0.0208469 -1.73472e-18" rpy="0 -0 0" />
+            <inertia ixx="5.90505e-09" ixy="1.59795e-11" ixz="0" iyy="6.03135e-09" iyz="0" izz="9.70334e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.250980_0.250980_0.250980_0.000000_0.000000">
+                <color rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.02 4.93038e-34 -0.01" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Servo_CPY.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="spur_gear__40_teeth_">
+        <inertial>
+            <mass value="8.2987e-06" />
+            <origin xyz="6.42452e-10 -1.04319e-09 0.0003382" rpy="0 -0 0" />
+            <inertia ixx="9.73679e-10" ixy="0" ixz="0" iyy="9.73679e-10" iyz="0" izz="1.86138e-09" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04 4.89859e-19 0.003" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Spur_gear__40_teeth_.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.498039_0.498039_0.498039_0.000000_0.000000">
+                <color rgba="0.498039 0.498039 0.498039 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.04 4.89859e-19 0.003" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Spur_gear__40_teeth_.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_guide_v3">
+        <inertial>
+            <mass value="9.16266e-05" />
+            <origin xyz="-0.0279667 0.0167226 0.0405448" rpy="0 -0 0" />
+            <inertia ixx="5.14917e-08" ixy="1.1231e-08" ixz="4.76414e-09" iyy="1.73928e-07" iyz="-6.96183e-09" izz="1.74074e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_guide_v3_1">
+        <inertial>
+            <mass value="9.16266e-05" />
+            <origin xyz="-0.0279667 0.0167226 0.0405448" rpy="0 -0 0" />
+            <inertia ixx="5.14917e-08" ixy="1.1231e-08" ixz="4.76414e-09" iyy="1.73928e-07" iyz="-6.96183e-09" izz="1.74074e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_guide_v3_2">
+        <inertial>
+            <mass value="9.16266e-05" />
+            <origin xyz="-0.0279667 0.0167226 0.0405448" rpy="0 -0 0" />
+            <inertia ixx="5.14917e-08" ixy="1.1231e-08" ixz="4.76414e-09" iyy="1.73928e-07" iyz="-6.96183e-09" izz="1.74074e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_guide_v3_3">
+        <inertial>
+            <mass value="9.16266e-05" />
+            <origin xyz="-0.0279667 0.0167226 0.0405448" rpy="0 -0 0" />
+            <inertia ixx="5.14917e-08" ixy="1.1231e-08" ixz="4.76414e-09" iyy="1.73928e-07" iyz="-6.96183e-09" izz="1.74074e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_guide_v3_4">
+        <inertial>
+            <mass value="9.16266e-05" />
+            <origin xyz="-0.0279667 0.0167226 0.0405448" rpy="0 -0 0" />
+            <inertia ixx="5.14917e-08" ixy="1.1231e-08" ixz="4.76414e-09" iyy="1.73928e-07" iyz="-6.96183e-09" izz="1.74074e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_guide_v3_5">
+        <inertial>
+            <mass value="9.16266e-05" />
+            <origin xyz="-0.0279667 0.0167226 0.0405448" rpy="0 -0 0" />
+            <inertia ixx="5.14917e-08" ixy="1.1231e-08" ixz="4.76414e-09" iyy="1.73928e-07" iyz="-6.96183e-09" izz="1.74074e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.086 0.024 0.051" rpy="0 -0 0" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_guide_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_moment_v3">
+        <inertial>
+            <mass value="6.20548e-05" />
+            <origin xyz="-0.0424607 0.034978 -0.00110311" rpy="0 0 -0.728327" />
+            <inertia ixx="7.85472e-08" ixy="6.88077e-08" ixz="-4.30191e-11" iyy="9.39182e-08" iyz="-4.81864e-11" izz="1.71693e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_moment_v3_1">
+        <inertial>
+            <mass value="6.20548e-05" />
+            <origin xyz="-0.0424607 0.034978 -0.00110311" rpy="0 0 -0.728327" />
+            <inertia ixx="7.85472e-08" ixy="6.88077e-08" ixz="-4.30191e-11" iyy="9.39182e-08" iyz="-4.81864e-11" izz="1.71693e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_moment_v3_2">
+        <inertial>
+            <mass value="6.20548e-05" />
+            <origin xyz="-0.0424607 0.034978 -0.00110311" rpy="0 0 -0.728327" />
+            <inertia ixx="7.85472e-08" ixy="6.88077e-08" ixz="-4.30191e-11" iyy="9.39182e-08" iyz="-4.81864e-11" izz="1.71693e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_moment_v3_3">
+        <inertial>
+            <mass value="6.20548e-05" />
+            <origin xyz="-0.0424607 0.034978 -0.00110311" rpy="0 0 -0.728327" />
+            <inertia ixx="7.85472e-08" ixy="6.88077e-08" ixz="-4.30191e-11" iyy="9.39182e-08" iyz="-4.81864e-11" izz="1.71693e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_moment_v3_4">
+        <inertial>
+            <mass value="6.20548e-05" />
+            <origin xyz="-0.0424607 0.034978 -0.00110311" rpy="0 0 -0.728327" />
+            <inertia ixx="7.85472e-08" ixy="6.88077e-08" ixz="-4.30191e-11" iyy="9.39182e-08" iyz="-4.81864e-11" izz="1.71693e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <link name="tibia_moment_v3_5">
+        <inertial>
+            <mass value="6.20548e-05" />
+            <origin xyz="-0.0424607 0.034978 -0.00110311" rpy="0 0 -0.728327" />
+            <inertia ixx="7.85472e-08" ixy="6.88077e-08" ixz="-4.30191e-11" iyy="9.39182e-08" iyz="-4.81864e-11" izz="1.71693e-07" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            <material name="0.749020_0.749020_0.749020_0.000000_0.000000">
+                <color rgba="0.74902 0.74902 0.74902 1" />
+            </material>
+        </visual>
+    <collision><origin xyz="-0.0820918 0.0732184 -0.002" rpy="0 0 -0.728327" />
+            <geometry>
+                <mesh filename="package://hexapod_robot_v3/meshes/Tibia_moment_v3.stl" scale="1 1 1" />
+            </geometry>
+            </collision></link>
+    <joint name="fastened_1" type="fixed">
+        <origin xyz="-0.003 -0.01825 0.0098" rpy="-1.5708 -9.03848e-15 -1.94191e-14" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case1_b_2" />
+        <child link="servo_cpy_6" />
+    </joint>
+    <joint name="fastened_10" type="fixed">
+        <origin xyz="0.003 -0.01925 -0.0098" rpy="-1.5708 -3.95804e-14 3.95302e-14" />
+        <axis xyz="0 -1 0" />
+        <parent link="case3_b_cpy_2" />
+        <child link="case_cpy_8" />
+    </joint>
+    <joint name="fastened_10_1" type="fixed">
+        <origin xyz="0.003 -0.01925 -0.0098" rpy="-1.5708 -3.78761e-14 3.78915e-14" />
+        <axis xyz="0 -1 0" />
+        <parent link="case3_b_cpy_3" />
+        <child link="case_cpy_11" />
+    </joint>
+    <joint name="fastened_10_2" type="fixed">
+        <origin xyz="0.003 -0.01925 -0.0098" rpy="-1.5708 -3.27064e-14 3.89114e-14" />
+        <axis xyz="0 -1 0" />
+        <parent link="case3_b_cpy_5" />
+        <child link="case_cpy_15" />
+    </joint>
+    <joint name="fastened_10_3" type="fixed">
+        <origin xyz="0.003 -0.01925 -0.0098" rpy="-1.5708 -3.27168e-14 3.87717e-14" />
+        <axis xyz="0 -1 0" />
+        <parent link="case3_b_cpy_1" />
+        <child link="case_cpy_3" />
+    </joint>
+    <joint name="fastened_10_4" type="fixed">
+        <origin xyz="0.003 -0.01925 -0.0098" rpy="-1.5708 -3.42678e-14 3.98241e-14" />
+        <axis xyz="0 -1 0" />
+        <parent link="case3_b_cpy_4" />
+        <child link="case_cpy_14" />
+    </joint>
+    <joint name="fastened_10_5" type="fixed">
+        <origin xyz="0.003 -0.01925 -0.0098" rpy="-1.5708 -3.31093e-14 3.92531e-14" />
+        <axis xyz="0 -1 0" />
+        <parent link="case3_b_cpy" />
+        <child link="case_cpy" />
+    </joint>
+    <joint name="fastened_11" type="fixed">
+        <origin xyz="0.01 -0.0465 -5.55112e-17" rpy="1.5708 3.44607e-14 -3.45664e-14" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="servo_cpy_8" />
+        <child link="case3_b_cpy_2" />
+    </joint>
+    <joint name="fastened_11_1" type="fixed">
+        <origin xyz="0.01 -0.0465 5.55112e-17" rpy="1.5708 3.56586e-14 -3.57543e-14" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="servo_cpy_10" />
+        <child link="case3_b_cpy_3" />
+    </joint>
+    <joint name="fastened_11_2" type="fixed">
+        <origin xyz="0.0105012 1.38778e-17 0.065932" rpy="-3.25011e-28 -1.73549e-28 -1.04083e-17" />
+        <axis xyz="0 1 0" />
+        <parent link="part_6" />
+        <child link="rpi_ai_camera" />
+    </joint>
+    <joint name="fastened_11_3" type="fixed">
+        <origin xyz="0.01 -0.0465 0" rpy="1.5708 3.58622e-14 3.04514e-14" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="servo_cpy_15" />
+        <child link="case3_b_cpy_5" />
+    </joint>
+    <joint name="fastened_11_4" type="fixed">
+        <origin xyz="0.01 -0.0465 -5.55112e-17" rpy="1.5708 3.47619e-14 3.04517e-14" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="servo_cpy_5" />
+        <child link="case3_b_cpy_1" />
+    </joint>
+    <joint name="fastened_11_5" type="fixed">
+        <origin xyz="0.01 -0.0465 5.55112e-17" rpy="1.5708 3.49098e-14 3.00839e-14" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="servo_cpy_14" />
+        <child link="case3_b_cpy_4" />
+    </joint>
+    <joint name="fastened_11_6" type="fixed">
+        <origin xyz="0.01 -0.0465 0" rpy="1.5708 3.48732e-14 3.03269e-14" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="servo_cpy" />
+        <child link="case3_b_cpy" />
+    </joint>
+    <joint name="fastened_12" type="fixed">
+        <origin xyz="-0.0801558 0.0393325 -0.005" rpy="3.14159 -4.65391e-15 2.41327" />
+        <axis xyz="0 0 -1" />
+        <parent link="tibia_moment_v3_2" />
+        <child link="tibia_guide_v3_2" />
+    </joint>
+    <joint name="fastened_12_1" type="fixed">
+        <origin xyz="-3.46945e-18 1.38778e-17 0.069432" rpy="1.1887e-16 -4.0627e-29 1.04083e-17" />
+        <axis xyz="0 -1.22465e-16 -1" />
+        <parent link="part_6" />
+        <child link="cap" />
+    </joint>
+    <joint name="fastened_12_2" type="fixed">
+        <origin xyz="-0.0801558 0.0393325 -0.005" rpy="3.14159 -4.31173e-15 2.41327" />
+        <axis xyz="0 0 -1" />
+        <parent link="tibia_moment_v3_3" />
+        <child link="tibia_guide_v3_3" />
+    </joint>
+    <joint name="fastened_12_3" type="fixed">
+        <origin xyz="-0.0801558 0.0393325 -0.005" rpy="3.14159 -4.89191e-15 2.41327" />
+        <axis xyz="0 0 -1" />
+        <parent link="tibia_moment_v3_5" />
+        <child link="tibia_guide_v3_5" />
+    </joint>
+    <joint name="fastened_12_4" type="fixed">
+        <origin xyz="-0.0801558 0.0393325 -0.005" rpy="3.14159 -4.61545e-15 2.41327" />
+        <axis xyz="0 0 -1" />
+        <parent link="tibia_moment_v3_1" />
+        <child link="tibia_guide_v3_1" />
+    </joint>
+    <joint name="fastened_12_5" type="fixed">
+        <origin xyz="-0.0801558 0.0393325 -0.005" rpy="3.14159 -4.68859e-15 2.41327" />
+        <axis xyz="0 0 -1" />
+        <parent link="tibia_moment_v3_4" />
+        <child link="tibia_guide_v3_4" />
+    </joint>
+    <joint name="fastened_12_6" type="fixed">
+        <origin xyz="-0.0801558 0.0393325 -0.005" rpy="3.14159 -4.471e-15 2.41327" />
+        <axis xyz="0 0 -1" />
+        <parent link="tibia_moment_v3" />
+        <child link="tibia_guide_v3" />
+    </joint>
+    <joint name="fastened_13" type="fixed">
+        <origin xyz="0.005 0.034 0.0163" rpy="4.16124e-29 -5.32481e-30 -1.5708" />
+        <axis xyz="0 0 -1" />
+        <parent link="gobilda_servo" />
+        <child link="spur_gear__40_teeth_" />
+    </joint>
+    <joint name="fastened_14" type="fixed">
+        <origin xyz="0.0548483 0.095 0.07" rpy="-6.88281e-29 1.26021e-28 -1.5708" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_upper_v3" />
+        <child link="part_6" />
+    </joint>
+    <joint name="fastened_15" type="fixed">
+        <origin xyz="0.00892427 0.00674903 -0.025" rpy="1.00892e-43 5.91646e-31 -3.46945e-18" />
+        <axis xyz="0 0 1" />
+        <parent link="part_6" />
+        <child link="bottom_cap" />
+    </joint>
+    <joint name="fastened_16" type="fixed">
+        <origin xyz="0.0898483 0.061 0.0607" rpy="-3.53737e-74 1.57772e-30 -4.48416e-44" />
+        <axis xyz="0 0 1" />
+        <parent link="body_upper_v3" />
+        <child link="gobilda_servo" />
+    </joint>
+    <joint name="fastened_17" type="fixed">
+        <origin xyz="-0.0548483 -0.095 0.0565" rpy="0 -0 0" />
+        <axis xyz="0 0 1" />
+        <parent link="body_lower_v2" />
+        <child link="body_upper_v3" />
+    </joint>
+    <joint name="fastened_1_1" type="fixed">
+        <origin xyz="-0.003 -0.01825 0.0098" rpy="-1.5708 -9.09689e-15 -1.94081e-14" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case1_b_3" />
+        <child link="servo_cpy_9" />
+    </joint>
+    <joint name="fastened_1_2" type="fixed">
+        <origin xyz="0.0528275 0.0305 0.0475" rpy="0 -0 -2.61799" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_lower_v2" />
+        <child link="case1_a_5" />
+    </joint>
+    <joint name="fastened_1_3" type="fixed">
+        <origin xyz="-0.003 -0.01825 0.0098" rpy="-1.5708 -9.21435e-15 -1.93729e-14" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case1_b_5" />
+        <child link="servo_cpy_17" />
+    </joint>
+    <joint name="fastened_1_4" type="fixed">
+        <origin xyz="-0.003 -0.01825 0.0098" rpy="-1.5708 1.92693e-14 -1.93665e-14" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case1_b_1" />
+        <child link="servo_cpy_3" />
+    </joint>
+    <joint name="fastened_1_5" type="fixed">
+        <origin xyz="-0.003 -0.01825 0.0098" rpy="-1.5708 1.92735e-14 -1.9279e-14" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case1_b_4" />
+        <child link="servo_cpy_13" />
+    </joint>
+    <joint name="fastened_1_6" type="fixed">
+        <origin xyz="-0.003 -0.01825 0.0098" rpy="-1.5708 1.93108e-14 -1.94429e-14" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case1_b" />
+        <child link="servo_cpy_2" />
+    </joint>
+    <joint name="fastened_2" type="fixed">
+        <origin xyz="0 -0.0365 -5.55112e-17" rpy="-1.5708 -2.79839e-16 7.88751e-16" />
+        <axis xyz="-1 -5.55112e-16 0" />
+        <parent link="case1_b_2" />
+        <child link="case_cpy_6" />
+    </joint>
+    <joint name="fastened_2_1" type="fixed">
+        <origin xyz="1.38778e-17 0.061 0.0475" rpy="3.69312e-23 -3.70024e-23 -1.5708" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_lower_v2" />
+        <child link="case1_a_3" />
+    </joint>
+    <joint name="fastened_2_2" type="fixed">
+        <origin xyz="1.11022e-16 -0.0365 2.77556e-17" rpy="-1.5708 -1.41574e-15 6.9247e-16" />
+        <axis xyz="-1 -5.55112e-16 0" />
+        <parent link="case1_b_3" />
+        <child link="case_cpy_9" />
+    </joint>
+    <joint name="fastened_2_3" type="fixed">
+        <origin xyz="3.81639e-17 -0.0365 -4.16334e-17" rpy="-1.5708 -3.68509e-16 4.71098e-16" />
+        <axis xyz="-1 -5.55112e-16 0" />
+        <parent link="case1_b_5" />
+        <child link="case_cpy_17" />
+    </joint>
+    <joint name="fastened_2_4" type="fixed">
+        <origin xyz="2.77556e-17 -0.0365 -1.38778e-17" rpy="-1.5708 -3.53884e-16 7.70217e-16" />
+        <axis xyz="-1 -5.55112e-16 0" />
+        <parent link="case1_b_1" />
+        <child link="case_cpy_5" />
+    </joint>
+    <joint name="fastened_2_5" type="fixed">
+        <origin xyz="5.55112e-17 -0.0365 -4.16334e-17" rpy="-1.5708 -5.35042e-16 9.01309e-16" />
+        <axis xyz="-1 -5.55112e-16 0" />
+        <parent link="case1_b_4" />
+        <child link="case_cpy_12" />
+    </joint>
+    <joint name="fastened_2_6" type="fixed">
+        <origin xyz="-4.85723e-17 -0.0365 -4.16334e-17" rpy="-1.5708 -3.59669e-16 7.92187e-16" />
+        <axis xyz="-1 -5.55112e-16 0" />
+        <parent link="case1_b" />
+        <child link="case_cpy_1" />
+    </joint>
+    <joint name="fastened_3" type="fixed">
+        <origin xyz="-0.03425 -0.01875 -0.0225" rpy="-3.14159 7.7613e-17 1.11022e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case1_a_2" />
+        <child link="case1_b_2" />
+    </joint>
+    <joint name="fastened_3_1" type="fixed">
+        <origin xyz="-0.03425 -0.01875 -0.0225" rpy="-3.14159 -4.85723e-17 1.23188e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case1_a_3" />
+        <child link="case1_b_3" />
+    </joint>
+    <joint name="fastened_3_2" type="fixed">
+        <origin xyz="-0.03425 -0.01875 -0.0225" rpy="-3.14159 8.134e-17 1.13798e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case1_a_5" />
+        <child link="case1_b_5" />
+    </joint>
+    <joint name="fastened_3_3" type="fixed">
+        <origin xyz="-0.03425 -0.01875 -0.0225" rpy="3.14159 -5.07757e-16 -3.6568e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case1_a_1" />
+        <child link="case1_b_1" />
+    </joint>
+    <joint name="fastened_3_4" type="fixed">
+        <origin xyz="-0.03425 -0.01875 -0.0225" rpy="-3.14159 4.70295e-17 1.11022e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case1_a_4" />
+        <child link="case1_b_4" />
+    </joint>
+    <joint name="fastened_3_5" type="fixed">
+        <origin xyz="-0.03425 -0.01875 -0.0225" rpy="-3.14159 7.95496e-17 1.33227e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case1_a" />
+        <child link="case1_b" />
+    </joint>
+    <joint name="fastened_3_6" type="fixed">
+        <origin xyz="0.0528275 -0.0305 0.0475" rpy="-1.9412e-29 -1.28451e-31 2.61799" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_lower_v2" />
+        <child link="case1_a" />
+    </joint>
+    <joint name="fastened_4" type="fixed">
+        <origin xyz="-0.0342736 -0.00709376 0" rpy="-1.5708 7.21645e-16 0.204093" />
+        <axis xyz="-0 -1 -0" />
+        <parent link="arm2_moment_v2_2" />
+        <child link="case2_a_v2_2" />
+    </joint>
+    <joint name="fastened_4_1" type="fixed">
+        <origin xyz="-0.0342736 -0.00709376 2.77556e-17" rpy="-1.5708 5.13478e-16 0.204093" />
+        <axis xyz="-0 -1 -0" />
+        <parent link="arm2_moment_v2_3" />
+        <child link="case2_a_v2_3" />
+    </joint>
+    <joint name="fastened_4_2" type="fixed">
+        <origin xyz="-0.0342736 -0.00709376 -6.245e-17" rpy="-1.5708 6.38378e-16 0.204093" />
+        <axis xyz="-0 -1 -0" />
+        <parent link="arm2_moment_v2_5" />
+        <child link="case2_a_v2_5" />
+    </joint>
+    <joint name="fastened_4_3" type="fixed">
+        <origin xyz="-1.38778e-17 -0.061 0.0475" rpy="1.35413e-14 -1.23547e-14 1.5708" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_lower_v2" />
+        <child link="case1_a_1" />
+    </joint>
+    <joint name="fastened_4_4" type="fixed">
+        <origin xyz="-0.0342736 -0.00709376 -1.38778e-17" rpy="-1.5708 7.07767e-16 0.204093" />
+        <axis xyz="-0 -1 -0" />
+        <parent link="arm2_moment_v2_1" />
+        <child link="case2_a_v2_1" />
+    </joint>
+    <joint name="fastened_4_5" type="fixed">
+        <origin xyz="-0.0342736 -0.00709376 6.93889e-18" rpy="-1.5708 8.46545e-16 0.204093" />
+        <axis xyz="-0 -1 -0" />
+        <parent link="arm2_moment_v2_4" />
+        <child link="case2_a_v2_4" />
+    </joint>
+    <joint name="fastened_4_6" type="fixed">
+        <origin xyz="-0.0342736 -0.00709376 -6.93889e-18" rpy="-1.5708 9.29812e-16 0.204093" />
+        <axis xyz="-0 -1 -0" />
+        <parent link="arm2_moment_v2" />
+        <child link="case2_a_v2" />
+    </joint>
+    <joint name="fastened_5" type="fixed">
+        <origin xyz="-0.0528275 0.0305 0.0475" rpy="0 0 -0.523599" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_lower_v2" />
+        <child link="case1_a_2" />
+    </joint>
+    <joint name="fastened_5_1" type="fixed">
+        <origin xyz="-0.00658536 0.0375 -0.015" rpy="-3.14159 -2.77556e-17 -1.35443e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_a_v2_2" />
+        <child link="case2_b_v2_2" />
+    </joint>
+    <joint name="fastened_5_2" type="fixed">
+        <origin xyz="-0.00658536 0.0375 -0.015" rpy="-3.14159 3.05311e-16 -1.35443e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_a_v2_3" />
+        <child link="case2_b_v2_3" />
+    </joint>
+    <joint name="fastened_5_3" type="fixed">
+        <origin xyz="-0.00658536 0.0375 -0.015" rpy="-3.14159 -3.05311e-16 -1.05173e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_a_v2_5" />
+        <child link="case2_b_v2_5" />
+    </joint>
+    <joint name="fastened_5_4" type="fixed">
+        <origin xyz="-0.00658536 0.0375 -0.015" rpy="-3.14159 1.66533e-16 -1.29066e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_a_v2_1" />
+        <child link="case2_b_v2_1" />
+    </joint>
+    <joint name="fastened_5_5" type="fixed">
+        <origin xyz="-0.00658536 0.0375 -0.015" rpy="-3.14159 1.11022e-16 -1.32535e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_a_v2_4" />
+        <child link="case2_b_v2_4" />
+    </joint>
+    <joint name="fastened_5_6" type="fixed">
+        <origin xyz="-0.00658536 0.0375 -0.015" rpy="-3.14159 -3.33067e-16 -1.31974e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_a_v2" />
+        <child link="case2_b_v2" />
+    </joint>
+    <joint name="fastened_6" type="fixed">
+        <origin xyz="-0.01325 6.93889e-17 -0.0055" rpy="-1.5708 5.03661e-16 1.03677e-15" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_b_v2_2" />
+        <child link="case_cpy_7" />
+    </joint>
+    <joint name="fastened_6_1" type="fixed">
+        <origin xyz="-0.01325 8.32667e-17 -0.0055" rpy="-1.5708 -3.84518e-16 9.25751e-16" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_b_v2_3" />
+        <child link="case_cpy_10" />
+    </joint>
+    <joint name="fastened_6_2" type="fixed">
+        <origin xyz="-0.01325 1.38778e-17 -0.0055" rpy="-1.5708 -2.30211e-16 1.10451e-15" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_b_v2_5" />
+        <child link="case_cpy_16" />
+    </joint>
+    <joint name="fastened_6_3" type="fixed">
+        <origin xyz="-0.01325 -5.55112e-17 -0.0055" rpy="-1.5708 2.24848e-16 1.06579e-15" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_b_v2_1" />
+        <child link="case_cpy_4" />
+    </joint>
+    <joint name="fastened_6_4" type="fixed">
+        <origin xyz="-0.01325 0 -0.0055" rpy="-1.5708 2.56769e-16 1.06162e-15" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_b_v2_4" />
+        <child link="case_cpy_13" />
+    </joint>
+    <joint name="fastened_6_5" type="fixed">
+        <origin xyz="-0.0528275 -0.0305 0.0475" rpy="-1.88226e-28 3.9878e-28 0.523599" />
+        <axis xyz="0 0 -1" />
+        <parent link="body_lower_v2" />
+        <child link="case1_a_4" />
+    </joint>
+    <joint name="fastened_6_6" type="fixed">
+        <origin xyz="-0.01325 0 -0.0055" rpy="-1.5708 2.69389e-16 1.27105e-15" />
+        <axis xyz="0 -1 0" />
+        <parent link="case2_b_v2" />
+        <child link="case_cpy_2" />
+    </joint>
+    <joint name="fastened_7" type="fixed">
+        <origin xyz="-0.01625 0.01825 0.0043" rpy="-1.5708 5.03661e-16 1.03677e-15" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case2_b_v2_2" />
+        <child link="servo_cpy_7" />
+    </joint>
+    <joint name="fastened_7_1" type="fixed">
+        <origin xyz="-0.01625 0.01825 0.0043" rpy="-1.5708 -3.84518e-16 9.25751e-16" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case2_b_v2_3" />
+        <child link="servo_cpy_11" />
+    </joint>
+    <joint name="fastened_7_2" type="fixed">
+        <origin xyz="-0.01625 0.01825 0.0043" rpy="-1.5708 -2.30211e-16 1.10451e-15" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case2_b_v2_5" />
+        <child link="servo_cpy_16" />
+    </joint>
+    <joint name="fastened_7_3" type="fixed">
+        <origin xyz="-0.01625 0.01825 0.0043" rpy="-1.5708 2.24848e-16 1.06579e-15" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case2_b_v2_1" />
+        <child link="servo_cpy_4" />
+    </joint>
+    <joint name="fastened_7_4" type="fixed">
+        <origin xyz="-0.01625 0.01825 0.0043" rpy="-1.5708 2.56769e-16 1.06162e-15" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case2_b_v2_4" />
+        <child link="servo_cpy_12" />
+    </joint>
+    <joint name="fastened_7_5" type="fixed">
+        <origin xyz="-0.01625 0.01825 0.0043" rpy="-1.5708 2.69389e-16 1.27105e-15" />
+        <axis xyz="-2.46519e-32 -1 0" />
+        <parent link="case2_b_v2" />
+        <child link="servo_cpy_1" />
+    </joint>
+    <joint name="fastened_7_6" type="fixed">
+        <origin xyz="0.0205 0.0005 0.0017" rpy="1.04744e-14 1.39659e-14 3.90733e-28" />
+        <axis xyz="0 0 1" />
+        <parent link="connect_v1" />
+        <child link="2xusb_2_0_port" />
+    </joint>
+    <joint name="fastened_8" type="fixed">
+        <origin xyz="0.05025 0.011 0.0305" rpy="0 1.5708 -3.66946e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="case3_a_cpy_2" />
+        <child link="legend_2_2" />
+    </joint>
+    <joint name="fastened_8_1" type="fixed">
+        <origin xyz="0.05025 0.011 0.0305" rpy="0 1.5708 -3.55314e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="case3_a_cpy_3" />
+        <child link="legend_2_3" />
+    </joint>
+    <joint name="fastened_8_2" type="fixed">
+        <origin xyz="0.05025 0.011 0.0305" rpy="0 1.5708 -3.33222e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="case3_a_cpy_5" />
+        <child link="legend_2_5" />
+    </joint>
+    <joint name="fastened_8_3" type="fixed">
+        <origin xyz="0.05025 0.011 0.0305" rpy="0 1.5708 -3.25778e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="case3_a_cpy_1" />
+        <child link="legend_2_1" />
+    </joint>
+    <joint name="fastened_8_4" type="fixed">
+        <origin xyz="-2.77556e-17 0 -0.005" rpy="0 1.5708 2.27908e-28" />
+        <axis xyz="1 0 0" />
+        <parent link="body_lower_v2" />
+        <child link="baterry" />
+    </joint>
+    <joint name="fastened_8_5" type="fixed">
+        <origin xyz="0.05025 0.011 0.0305" rpy="0 1.5708 -4.66364e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="case3_a_cpy_4" />
+        <child link="legend_2_4" />
+    </joint>
+    <joint name="fastened_8_6" type="fixed">
+        <origin xyz="0.05025 0.011 0.0305" rpy="0 1.5708 -2.49995e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="case3_a_cpy" />
+        <child link="legend_2" />
+    </joint>
+    <joint name="fastened_9" type="fixed">
+        <origin xyz="1.38778e-16 0.01075 -0.0098" rpy="3.14159 1.30762e-15 1.80411e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case3_b_cpy_2" />
+        <child link="case3_a_cpy_2" />
+    </joint>
+    <joint name="fastened_9_1" type="fixed">
+        <origin xyz="2.77556e-17 0.01075 -0.0098" rpy="3.14159 -7.25307e-16 3.02536e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case3_b_cpy_3" />
+        <child link="case3_a_cpy_3" />
+    </joint>
+    <joint name="fastened_9_2" type="fixed">
+        <origin xyz="1.38778e-17 0.01075 -0.0098" rpy="3.14159 -1.39682e-15 2.41474e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case3_b_cpy_5" />
+        <child link="case3_a_cpy_5" />
+    </joint>
+    <joint name="fastened_9_3" type="fixed">
+        <origin xyz="0 0.01075 -0.0098" rpy="3.14159 9.6441e-16 2.13718e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case3_b_cpy_1" />
+        <child link="case3_a_cpy_1" />
+    </joint>
+    <joint name="fastened_9_4" type="fixed">
+        <origin xyz="-0.015 -0.0245 0.05" rpy="-1.04744e-14 -1.39659e-14 3.14159" />
+        <axis xyz="-1.39659e-14 1.04744e-14 -1" />
+        <parent link="body_lower_v2" />
+        <child link="connect_v1" />
+    </joint>
+    <joint name="fastened_9_5" type="fixed">
+        <origin xyz="-2.77556e-17 0.01075 -0.0098" rpy="3.14159 1.09719e-15 1.30451e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case3_b_cpy_4" />
+        <child link="case3_a_cpy_4" />
+    </joint>
+    <joint name="fastened_9_6" type="fixed">
+        <origin xyz="1.38778e-17 0.01075 -0.0098" rpy="3.14159 -9.03986e-16 2.47025e-15" />
+        <axis xyz="-0 -0 -1" />
+        <parent link="case3_b_cpy" />
+        <child link="case3_a_cpy" />
+    </joint>
+    <joint name="fixed_node_to_root_joint" type="fixed">
+        <origin xyz="0.0278837 -0.117244 -0.0991808" rpy="-3.49148e-15 2.44404e-14 1.5708" />
+        <axis xyz="0 0 1" />
+        <parent link="root" />
+        <child link="body_lower_v2" />
+    </joint>
+    <joint name="revolute_1" type="continuous">
+        <origin xyz="-0.01 0.0465 -5.55112e-17" rpy="-1.5708 -0.168134 -2.29866e-14" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_6" />
+        <child link="arm2_moment_v2_2" />
+    </joint>
+    <joint name="revolute_1_1" type="continuous">
+        <origin xyz="-0.01 0.0465 4.16334e-17" rpy="-1.5708 -0.468858 -2.68195e-14" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_9" />
+        <child link="arm2_moment_v2_3" />
+    </joint>
+    <joint name="revolute_1_2" type="continuous">
+        <origin xyz="-0.01 0.0465 -1.38778e-17" rpy="-1.5708 -0.270204 -2.39045e-14" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_17" />
+        <child link="arm2_moment_v2_5" />
+    </joint>
+    <joint name="revolute_1_3" type="continuous">
+        <origin xyz="-0.01 0.0465 2.77556e-17" rpy="-1.5708 -0.0646547 -2.10897e-14" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_3" />
+        <child link="arm2_moment_v2_1" />
+    </joint>
+    <joint name="revolute_1_4" type="continuous">
+        <origin xyz="-0.01 0.0465 2.77556e-17" rpy="-1.5708 0.266357 -1.32343e-14" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_13" />
+        <child link="arm2_moment_v2_4" />
+    </joint>
+    <joint name="revolute_1_5" type="continuous">
+        <origin xyz="-0.01 0.0465 -4.16334e-17" rpy="-1.5708 -1.98971e-14 -1.9788e-14" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_2" />
+        <child link="arm2_moment_v2" />
+    </joint>
+    <joint name="revolute_2" type="continuous">
+        <origin xyz="-0.01 0.0465 1.38778e-17" rpy="1.5708 1.36995 -3.14159" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_7" />
+        <child link="tibia_moment_v3_2" />
+    </joint>
+    <joint name="revolute_2_1" type="continuous">
+        <origin xyz="-0.01 0.0465 -2.08167e-17" rpy="1.5708 1.51512 3.14159" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_11" />
+        <child link="tibia_moment_v3_3" />
+    </joint>
+    <joint name="revolute_2_2" type="continuous">
+        <origin xyz="-0.01 0.0465 0" rpy="-1.5708 1.29897 -2.6878e-15" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_16" />
+        <child link="tibia_moment_v3_5" />
+    </joint>
+    <joint name="revolute_2_3" type="continuous">
+        <origin xyz="-0.01 0.0465 6.93889e-18" rpy="1.5708 1.53313 3.14159" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_4" />
+        <child link="tibia_moment_v3_1" />
+    </joint>
+    <joint name="revolute_2_4" type="continuous">
+        <origin xyz="-0.01 0.0465 -4.16334e-17" rpy="1.5708 1.53313 -3.14159" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_12" />
+        <child link="tibia_moment_v3_4" />
+    </joint>
+    <joint name="revolute_2_5" type="continuous">
+        <origin xyz="-0.01 0.0465 -2.77556e-17" rpy="0 1.5708 -4.71239" />
+        <axis xyz="0 0 -1" />
+        <parent link="servo_cpy_1" />
+        <child link="tibia_moment_v3" />
+    </joint>
+    <joint name="revolute_3" type="continuous">
+        <origin xyz="-0.0820918 0.0732184 -6.245e-17" rpy="1.5708 -4.66294e-14 0.524245" />
+        <axis xyz="-0 1 -0" />
+        <parent link="tibia_moment_v3_2" />
+        <child link="servo_cpy_8" />
+    </joint>
+    <joint name="revolute_3_1" type="continuous">
+        <origin xyz="-0.0820918 0.0732184 1.38778e-17" rpy="1.5708 -4.52971e-14 0.669417" />
+        <axis xyz="-0 1 -0" />
+        <parent link="tibia_moment_v3_3" />
+        <child link="servo_cpy_10" />
+    </joint>
+    <joint name="revolute_3_2" type="continuous">
+        <origin xyz="-0.0820918 0.0732184 -1.64799e-17" rpy="1.5708 -4.82947e-14 0.996915" />
+        <axis xyz="-0 1 -0" />
+        <parent link="tibia_moment_v3_5" />
+        <child link="servo_cpy_15" />
+    </joint>
+    <joint name="revolute_3_3" type="continuous">
+        <origin xyz="-0.0820918 0.0732184 -2.77556e-17" rpy="1.5708 -4.61853e-14 0.687421" />
+        <axis xyz="-0 1 -0" />
+        <parent link="tibia_moment_v3_1" />
+        <child link="servo_cpy_5" />
+    </joint>
+    <joint name="revolute_3_4" type="continuous">
+        <origin xyz="-0.0820918 0.0732184 -2.77556e-17" rpy="1.5708 -4.70735e-14 0.687421" />
+        <axis xyz="-0 1 -0" />
+        <parent link="tibia_moment_v3_4" />
+        <child link="servo_cpy_14" />
+    </joint>
+    <joint name="revolute_3_5" type="continuous">
+        <origin xyz="-0.0820918 0.0732184 0" rpy="1.5708 -4.59077e-14 0.725091" />
+        <axis xyz="-0 1 -0" />
+        <parent link="tibia_moment_v3" />
+        <child link="servo_cpy" />
+    </joint>
+</robot>
