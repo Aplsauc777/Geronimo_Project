@@ -79,18 +79,6 @@ ALL_LEGS = (
     + BACK_LEFT_LEG
 )
 
-GAIT_A = [
-    FRONT_RIGHT_LEG,
-    MIDDLE_LEFT_LEG,
-    BACK_RIGHT_LEG,
-]
-
-GAIT_B = [
-    FRONT_LEFT_LEG,
-    MIDDLE_RIGHT_LEG,
-    BACK_LEFT_LEG,
-]
-
 # fix these values
 
 COXA_LENGTH = 0.0690507
@@ -106,18 +94,77 @@ HOME_HEIGHT = 0.11912510
 class LegConfig:
     name: str
     joint_names: tuple[str, str, str]
-    home_xyz: tuple[float, float, float]
-    mount_xyz: tuple[float, float, float]
     mount_yaw: float
     signs: tuple[float, float, float]
     offsets: tuple[float, float, float]
     
+FRONT_RIGHT_CONFIG = LegConfig(
+    
+    name="front_right",
+    joint_names=tuple(FRONT_RIGHT_LEG),
+    mount_yaw=-math.pi / 3.0,
+    signs=(1.0, 1.0, -1.0),
+    offsets=(0.0, 0.0, 0.0),
+)
+
+MIDDLE_RIGHT_CONFIG = LegConfig(
+    name="middle_right",
+    joint_names=tuple(MIDDLE_RIGHT_LEG),
+    mount_yaw=-math.pi / 2.0,
+    signs=(1.0, 1.0, -1.0),
+    offsets=(0.0, 0.0, 0.0),
+)
+
+BACK_RIGHT_CONFIG = LegConfig(
+    name="back_right",
+    joint_names=tuple(BACK_RIGHT_LEG),
+    mount_yaw=-2 * math.pi / 3.0,
+    signs=(1.0, 1.0, -1.0),
+    offsets=(0.0, 0.0, 0.0),
+)
+
+FRONT_LEFT_CONFIG = LegConfig(
+    
+    name="front_left",
+    joint_names=tuple(FRONT_LEFT_LEG),
+    mount_yaw=math.pi / 3.0,
+    signs=(1.0, 1.0, -1.0),
+    offsets=(0.0, 0.0, 0.0),
+)
+
+MIDDLE_LEFT_CONFIG = LegConfig(
+    name="middle_left",
+    joint_names=tuple(MIDDLE_LEFT_LEG),
+    mount_yaw=math.pi / 2.0,
+    signs=(1.0, 1.0, -1.0),
+    offsets=(0.0, 0.0, 0.0),
+)
+
+BACK_LEFT_CONFIG = LegConfig(
+    name="back_left",
+    joint_names=tuple(BACK_LEFT_LEG),
+    mount_yaw=2 * math.pi / 3.0,
+    signs=(1.0, 1.0, -1.0),
+    offsets=(0.0, 0.0, 0.0),
+)
+
+LEGS = (
+    FRONT_RIGHT_CONFIG,
+    MIDDLE_RIGHT_CONFIG,
+    BACK_RIGHT_CONFIG,
+    FRONT_LEFT_CONFIG,  
+    MIDDLE_LEFT_CONFIG,
+    BACK_LEFT_CONFIG,
+)
+
+
+
 GERONIMO_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
         usd_path=GERONIMO_PATH,
 
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
-            disable_gravity=True,
+            disable_gravity=False,
 
             max_depenetration_velocity=5.0,
         ),
@@ -149,7 +196,7 @@ GERONIMO_CFG = ArticulationCfg(
 
             damping=35.0,
 
-            armature=0.01,
+            armature=0.02,
         )
     },
 )
@@ -163,8 +210,8 @@ class GeronimoSceneCfg(InteractiveSceneCfg):
             size=(100.0, 100.0),
 
             physics_material=sim_utils.RigidBodyMaterialCfg(
-                static_friction=2.5,
-                dynamic_friction=2.0,
+                static_friction=2.0,
+                dynamic_friction=1.5,
                 restitution=0.0,
             ),
         ),
@@ -178,93 +225,33 @@ class GeronimoSceneCfg(InteractiveSceneCfg):
     geronimo = GERONIMO_CFG.replace(
         prim_path="{ENV_REGEX_NS}/Robot"
     )
-# @configclass
-# class GeronimoSceneCfg(InteractiveSceneCfg):
 
-#     ground = AssetBaseCfg(
-#         prim_path="/World/ground",
-#         spawn=sim_utils.GroundPlaneCfg(
-#             size=(100.0, 100.0),
 
-#             physics_material=sim_utils.RigidBodyMaterialCfg(
-#                 static_friction=2.5,
-#                 dynamic_friction=2.0,
-#                 restitution=0.0,
-#             ),
-#         ),
-#     )
-
-#     light = AssetBaseCfg(
-#         prim_path="/World/DomeLight",
-#         spawn=sim_utils.DomeLightCfg(
-#             intensity=3000.0,
-#         ),
-#     )
-
-#     geronimo = ArticulationCfg(
-#         prim_path="{ENV_REGEX_NS}/geronimo",
-#         spawn=sim_utils.UsdFileCfg(
-#             usd_path=GERONIMO_PATH,
-
-#             rigid_props=sim_utils.RigidBodyPropertiesCfg(
-#                 disable_gravity=False,
-#                 max_depenetration_velocity=5.0,
-#             ),
-
-#             articulation_props=sim_utils.ArticulationRootPropertiesCfg(
-#                 enabled_self_collisions=False,
-#                 solver_position_iteration_count=8,
-#                 solver_velocity_iteration_count=1,
-#             ),
-#         ),
-
-#         init_state=ArticulationCfg.InitialStateCfg(
-#             pos=(0.0, 0.0, 0.5),
-#         ),
-
-#         actuators = {
-#             "leg_motors": ImplicitActuatorCfg(
-#             joint_names_expr=ALL_LEGS,
-#             effort_limit_sim=300.0,
-#             velocity_limit_sim=200.0,
-#             stiffness=50.0,
-#             damping=30.0,
-#             armature=0.01,
-#             )
-#         }
-#     )
-
-MIDDLE_RIGHT_CONFIG = LegConfig(
-    name="middle_right",
-    joint_names=tuple(MIDDLE_RIGHT_LEG),
-    home_xyz=(HOME_RADIUS, 0.0, -HOME_HEIGHT),
-    mount_xyz=(-0.2, 0.0, 0.0),
-    mount_yaw=-math.pi / 2.0,
-    signs=(1.0, 1.0, -1.0),
-    offsets=(0.0, 0.0, 0.0),
-)
-
-LEGS = (
-    MIDDLE_RIGHT_CONFIG,
-)
 
 class HexapodIK:
     
     def __init__(self, legs):
         self.legs = {leg.name: leg for leg in legs}
 
-    def body_to_leg_frame(self, leg, x, y, z):
-        dx = x - leg.mount_xyz[0]
-        dy = y - leg.mount_xyz[1]
-        dz = z - leg.mount_xyz[2]
-
-        cos, sin = math.cos(leg.mount_yaw), math.sin(leg.mount_yaw)
-
-        x_leg = cos * dx + sin * dy
-        y_leg = -sin * dx + cos * dy
-        z_leg = dz
-        
-        return x_leg, y_leg, z_leg
+    def smoothstep(self, value: float) -> float:
+        return value * value * (3.0 - 2.0 * value)
+    
+    def foot_trajectory(self, phase: float, ground_time: float, step_length: float, step_height: float) -> tuple[float, float, float]:
+        phase = phase % 1.0
+        if phase < ground_time:
+            progress = self.smoothstep(phase / ground_time)
+            dx = (step_length / 2.0 - step_length * progress)
+            dy = 0.0
+            dz = 0.0
+            state = "ground"
+        else:
+            progress = (phase - ground_time) / (1.0 - ground_time)
+            horiz = self.smoothstep(progress)
+            dx = (-step_length / 2.0 + step_length * horiz)
+            dy = 0.0
+            dz = (0.5 * step_height * (1.0 - math.cos(2.0 * math.pi * progress)))
+            state = "air"
+        return dx, dy, dz, state
 
     def solve_leg_local(self, xl, yl, zl, knee_down=True) -> tuple[float, float, float]:
 
@@ -279,60 +266,33 @@ class HexapodIK:
 
         a = math.atan2(zl, horizontal_distance)
         b = (FEMUR_LENGTH**2 + d**2 - TIBIA_LENGTH**2) / (2 * FEMUR_LENGTH * d)
-        b = math.acos(np.clip(b, -1.0, 1.0))
-        s3 = (FEMUR_LENGTH**2 + TIBIA_LENGTH**2 - d**2) / (2 * FEMUR_LENGTH * TIBIA_LENGTH)
-        s3 = math.acos(np.clip(s3, -1.0, 1.0))
-        s3 = s3 - math.pi
-        if knee_down:
-            s2 = a + b
-        else:
-            s2 = a - b
+        b = math.acos(max(-1.0, min(1.0, b)))
+        k = (FEMUR_LENGTH**2 + TIBIA_LENGTH**2 - d**2) / (2 * FEMUR_LENGTH * TIBIA_LENGTH)
+        k = math.acos(max(-1.0, min(1.0, k)))
+        s2 = a + b if knee_down else a - b
+        s3 = k - math.pi
         
         return s1, s2, s3
     
-    def solve_leg_offset(self, leg_name, x, y, z, knee_down: bool=True) -> tuple[float, float, float]:
-        leg = self.legs[leg_name]
-        home_x, home_y, home_z = leg.home_xyz
-        target_x = home_x + x
-        target_y = home_y + y
-        target_z = home_z + z
-        return self.solve_leg_local(xl=target_x, yl=target_y, zl=target_z, knee_down=knee_down)
 
-    
-    def to_command(self, leg_name, s1, s2, s3) -> tuple[float, float, float]:
-        leg = self.legs[leg_name]
-        angles = s1, s2, s3
-        return tuple(leg.signs[i] * angles[i] + leg.offsets[i] for i in range(3))
-    
-    # This is a test function
-    def forward_kinematics(self, leg_name, s1, s2, s3) -> tuple[float, float, float]:
-        leg = self.legs[leg_name]
+    def fk_local(self, s1, s2, s3) -> tuple[float, float, float]:
         radial = COXA_LENGTH + FEMUR_LENGTH * math.cos(s2) + TIBIA_LENGTH * math.cos(s2 + s3)
         vertical = FEMUR_LENGTH * math.sin(s2) + TIBIA_LENGTH * math.sin(s2 + s3)
-        xl = radial * math.cos(s1)
-        yl = radial * math.sin(s1)
-        zl = vertical
-        cos, sin = math.cos(leg.mount_yaw), math.sin(leg.mount_yaw)
-        x = cos * xl - sin * yl + leg.mount_xyz[0]
-        y = sin * xl + cos * yl + leg.mount_xyz[1]
-        z = zl + leg.mount_xyz[2]
-        return x, y, z
+        return radial * math.cos(s1), radial * math.sin(s1), vertical
     
-    def body_offset_to_leg_offset(
-            self,
-            leg_name: str,
-            x_body: float,
-            y_body: float,
-            z_body: float,
-    ) -> tuple[float, float, float]:
-        leg = self.legs[leg_name]
+    def body_vec_to_leg(self, leg, vx, vy, vz) -> tuple[float, float, float]:
+        c, s = math.cos(leg.mount_yaw), math.sin(leg.mount_yaw)
+        return c * vx + s * vy, -s * vx + c * vy, vz
 
-        cos, sin = math.cos(leg.mount_yaw), math.sin(leg.mount_yaw)
+    def home_geo_from_command(self, leg, q_cmd):
+        return tuple((q_cmd[i] - leg.offsets[i]) / leg.signs[i] for i in range(3))
 
-        x_leg = cos * x_body + sin * y_body
-        y_leg = -sin * x_body + cos * y_body
-        z_leg = z_body
-        return x_leg, y_leg, z_leg
+    def command_from_body_offset(self, leg, home_leg_xyz, dx, dy, dz, knee_down=True):
+        lx, ly, lz = self.body_vec_to_leg(leg, dx, dy, dz)
+        target = (home_leg_xyz[0] + lx, home_leg_xyz[1] + ly, home_leg_xyz[2] + lz)
+        s1, s2, s3 = self.solve_leg_local(*target, knee_down=knee_down)
+        geo = (s1, s2, s3)
+        return tuple(leg.signs[i] * geo[i] + leg.offsets[i] for i in range(3))
     
 
 
@@ -355,148 +315,91 @@ def run_simulator(
 
     ik = HexapodIK(LEGS)
 
-    standing_pose = geronimo.data.default_joint_pos.clone()
+    default_pose = geronimo.data.default_joint_pos.clone()
 
-    test_leg_cfg = MIDDLE_RIGHT_CONFIG
+    leg_ids = {}
+    leg_home = {}
+    for leg in LEGS:
+        ids, names = geronimo.find_joints(leg.joint_names, preserve_order=True)
+        if len(ids) != 3:
+            raise RuntimeError(f"missing servos for {leg.name}. Fount: {names}")
+        leg_ids[leg.name] = ids
+        q_cmd = default_pose[0, ids].tolist()
+        geo_home = ik.home_geo_from_command(leg, q_cmd)
+        leg_home[leg.name] = ik.fk_local(*geo_home)
 
-    test_leg_joint_ids, matched_joint_names = geronimo.find_joints(
-        test_leg_cfg.joint_names,
-        preserve_order=True,
-    )
-
-    if len(test_leg_joint_ids) != 3:
-        raise RuntimeError(f"missing joints for {test_leg_cfg.name}")
-    print(f"{matched_joint_names}")
-
-    standing_leg_pose = standing_pose[:, test_leg_joint_ids,].clone()
-    standing_angles = standing_leg_pose[0].tolist()
-
-
-    home_ik_angles = ik.solve_leg_offset(
-        leg_name=test_leg_cfg.name,
-        x=0.0,
-        y=0.0,
-        z=0.0,
-        knee_down=True,
-    )
-
-    calibrated_offsets = tuple(
-        standing_angles[i] - test_leg_cfg.signs[i] * home_ik_angles[i] for i in range(3)
-    )
-
-    body_test_offset = (0.0, 0.0, 0.3,)
-    leg_test_offset = ik.body_offset_to_leg_offset(
-        leg_name=test_leg_cfg.name,
-        x_body=body_test_offset[0],
-        y_body=body_test_offset[1],
-        z_body=body_test_offset[2],
-    )
-
-    final_ik_angles = ik.solve_leg_offset(
-        leg_name=test_leg_cfg.name,
-        x=leg_test_offset[0],
-        y=leg_test_offset[1],
-        z=leg_test_offset[2],
-        knee_down=True,
-    )
-
-    final_command_angles = tuple(
-        test_leg_cfg.signs[i] * final_ik_angles[i] + calibrated_offsets[i] for i in range(3)
-    )
-
-    maximum_change = max(
-        abs(final_command_angles[i] - standing_angles[i]) for i in range(3)
-    )
-
-
-    wait_time = 2.0
-    cycle_time = 4.0
-
-    wait_steps = int(wait_time / sim_dt)
+    TRIPOD_A = {
+        "front_right",
+        "middle_left",
+        "back_right",
+    }
+    TRIPOD_B = {
+        "front_left",
+        "middle_right",
+        "back_left",
+    }
+    GROUND_TIME = 0.51
+    # AXIS = (1.0, 0.0, 0.0)
+    # AMPLITUDE = 0.05
+    START_DELAY = 0.5
+    RAMP_TIME = 3.0
+    STEP_LENGTH = 0.3
+    STEP_HEIGHT = 0.04
+    CYCLE_TIME = 1.0
     print_interval = max(1, int(1.0 / sim_dt))
     step_count = 0
 
-
     while simulation_app.is_running():
+        joint_target = default_pose.clone()
 
-        joint_target = standing_pose.clone()
+        total_time = step_count * sim_dt
 
-        if step_count < wait_steps:
-            interpolation = 0.0
-
+        if total_time < START_DELAY:
+            global_phase = 0.0
+            ramp = 0.0
         else:
-            elapsed_time = (
-                step_count - wait_steps
-            ) * sim_dt
+            gait_time = total_time - START_DELAY
+            global_phase = gait_time / CYCLE_TIME % 1.0
+            ramp_progress = min(1.0, gait_time / RAMP_TIME)
+            ramp = ik.smoothstep(ramp_progress)
+       
+        #     t = (step_count - wait_steps) * sim_dt
+        #     interpolation = math.sin(2.0 * math.pi * t / cycle_time)
+        # dx = interpolation * AMPLITUDE * AXIS[0]
+        # dy = interpolation * AMPLITUDE * AXIS[1]
+        # dz = interpolation * AMPLITUDE * AXIS[2]
+        tripod_states = {}
 
-            phase = (
-                2.0
-                * math.pi
-                * elapsed_time
-                / cycle_time
-            )
+        for leg in LEGS:
+            if leg.name in TRIPOD_A:
+                leg_phase = global_phase
+            else:
+                leg_phase = (global_phase + 0.5) % 1.0
+            
+            dx, dy, dz, gait_state = ik.foot_trajectory(leg_phase, GROUND_TIME, STEP_LENGTH, STEP_HEIGHT)
+            tripod_states[leg.name] = gait_state
+            dx *= ramp
+            dy *= ramp
+            dz *= ramp
+            cmd = ik.command_from_body_offset(leg, leg_home[leg.name], dx, dy, dz, knee_down=True)
 
-            interpolation = 0.5 * (
-                1.0 - math.cos(phase)
-            )
-        current_offset = (
-            interpolation * leg_test_offset[0],
-            interpolation * leg_test_offset[1],
-            interpolation * leg_test_offset[2],
-        )
-        
-        current_ik_angles = ik.solve_leg_offset(
-            leg_name=test_leg_cfg.name,
-            x=current_offset[0],
-            y=current_offset[1],
-            z=current_offset[2],
-            knee_down=True,
-        )
+            t_cmd = torch.tensor(cmd, device=default_pose.device, dtype=default_pose.dtype)
+            t_cmd = t_cmd.repeat(default_pose.shape[0], 1)
+            joint_target[:, leg_ids[leg.name]] = t_cmd
+            # cmd = ik.command_from_body_offset(leg, leg_home[leg.name], dx, dy, dz)
+            # t_cmd = torch.tensor(cmd, device=default_pose.device, dtype=default_pose.dtype)
+            # joint_target[:, leg_ids[leg.name]] = t_cmd.unsqueeze(0).repeat(default_pose.shape[0], 1)
 
-        current_command_angle = tuple(
-            test_leg_cfg.signs[i] * current_ik_angles[i] + calibrated_offsets[i] for i in range(3)
-        )
-
-        current_test_leg_target = torch.tensor(
-            current_command_angle,
-            device=standing_pose.device,
-            dtype=standing_pose.dtype,
-        ).unsqueeze(0)
-
-        current_test_leg_target = current_test_leg_target.repeat(
-            standing_pose.shape[0],
-            1,
-        )
-
-        joint_target[
-            :,
-            test_leg_joint_ids,
-        ] = current_test_leg_target
-
-        geronimo.set_joint_position_target(
-            joint_target
-        )
-
+        geronimo.set_joint_position_target(joint_target)
         scene.write_data_to_sim()
         sim.step()
         scene.update(sim_dt)
-
         step_count += 1
 
         if step_count % print_interval == 0:
-            actual_angles = geronimo.data.joint_pos[
-                0,
-                test_leg_joint_ids,
-            ]
-
-            print(
-                f"blend={interpolation:.3f} | "
-                f"target={current_test_leg_target[0].tolist()} | "
-                f"actual={actual_angles.tolist()}"
-            )
+            print(f"body offset: ({dx:+.3f}, {dy:+.3f}, {dz:+.3f}) m")
 
 def main() -> None:
-    print("[MAIN] Creating simulation context", flush=True)
 
     sim_cfg = sim_utils.SimulationCfg(
         device=args_cli.device,
