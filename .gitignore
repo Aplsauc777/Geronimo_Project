@@ -1,54 +1,62 @@
 # Python
 __pycache__/
 *.py[cod]
-*.egg-info/
+*.pyd
+*.so
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
 
-# Environments
-.env
-.env.*
+# Virtual environments
 .venv/
 venv/
 env/
 conda-env/
 
-# Credentials and private files
-client_secret*.json
-credentials*.json
-token*.json
-*.pem
-*.key
+# Editors
+.vscode/
+.idea/
 
-# Isaac Lab / reinforcement-learning outputs
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Isaac Sim / Isaac Lab output
 logs/
 outputs/
-runs/
-checkpoints/
-wandb/
-tensorboard/
-videos/
+cache/
+kit/
+.omniverse/
 
-# Model checkpoints
+# RL checkpoints and large outputs
+experiments/checkpoints/
+experiments/videos/
+experiments/results/raw/
+deployment/exported_models/
+
+# Mission output
+missions/
+
+# Datasets
+perception/datasets/raw/
+perception/datasets/processed/
+
+# Models
 *.pt
 *.pth
-*.ckpt
+*.onnx
+*.engine
 
-# Jupyter
-.ipynb checkpoints/
+# Videos and large media
+*.mp4
+*.avi
+*.mov
 
-# Operation-system files
-Thumbs.b
-Desktop.ini
-.DS_Store
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
 
-# Temporary CAD and editor files
-~$*
+# Temporary files
 *.tmp
-*.bak
-*.autosave
-
-# General logs and caches
 *.log
-.cache/
