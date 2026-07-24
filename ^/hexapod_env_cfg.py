@@ -6,7 +6,6 @@ import math
 import isaaclab.sim as sim_utils
 
 from isaaclab.assets import ArticulationCfg, AssetBaseCfg
-from isaaclab.actuators import ImplicitActuatorCfg
 from isaaclab.envs import ManagerBasedRLEnvCfg
 from isaaclab.managers import EventTermCfg as EventTerm
 from isaaclab.managers import ObservationGroupCfg as ObsGroup
@@ -79,7 +78,7 @@ JOINTS = (
 GERONIMO_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
         usd_path=GERONIMO_USD,
-        activate_contact_sensors=True,
+
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
             max_depenetration_velocity=5.0,
@@ -99,7 +98,7 @@ GERONIMO_CFG = ArticulationCfg(
     ),
 
     actuators={
-        "leg_motors": ImplicitActuatorCfg(
+        "leg_motors": mdp.ImplicitActuatorCfg(
             joint_names_expr=JOINTS,
 
             effort_limit_sim=10.0,
@@ -361,7 +360,7 @@ class HexapodEnvCfg(ManagerBasedRLEnvCfg):
     def __post_init__(self) -> None:
         """these are the final environmental things to configure"""
 
-        self.dim_dt = 1.0 / 120.0
+        self.dim.dt = 1.0 / 120.0
         self.decimation = 4
         self.sim.render_interval = self.decimation
         self.episode_length_s = 10.0

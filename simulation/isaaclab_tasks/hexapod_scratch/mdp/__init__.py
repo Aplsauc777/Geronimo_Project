@@ -1,9 +1,8 @@
-# ------------------------------------------------------------
-# mdp/__init__.py
-#
-# Marks this folder as a Python package.
-# This lets Python import:
-#
-#   hexapod_scratch.mdp.rewards
-#   hexapod_scratch.mdp.terminations
-# ------------------------------------------------------------
+"""Imports the MDP functions used by the Geronimo hexapod environment"""
+
+from isaaclab.envs.mdp import *
+
+from .observations import *
+from .rewards import *
+from .terminations import *
+from .events import *
