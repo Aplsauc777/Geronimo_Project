@@ -1,0 +1,273 @@
+{
+  "usd_path": "C:\\Users\\Johnt\\OneDrive\\Desktop\\Hexapod\\assets_v3\\geronimo_v3_collision_heavy.usd",
+  "num_joints": 18,
+  "num_bodies": 19,
+  "is_fixed_base": false,
+  "joint_names": [
+    "revolute_1",
+    "revolute_1_1",
+    "revolute_1_2",
+    "revolute_1_3",
+    "revolute_1_4",
+    "revolute_1_5",
+    "revolute_2",
+    "revolute_2_1",
+    "revolute_2_2",
+    "revolute_2_3",
+    "revolute_2_4",
+    "revolute_2_5",
+    "revolute_3",
+    "revolute_3_1",
+    "revolute_3_2",
+    "revolute_3_3",
+    "revolute_3_4",
+    "revolute_3_5"
+  ],
+  "body_names": [
+    "root",
+    "arm2_moment_v2_2",
+    "arm2_moment_v2_3",
+    "arm2_moment_v2_5",
+    "arm2_moment_v2_1",
+    "arm2_moment_v2_4",
+    "arm2_moment_v2",
+    "tibia_moment_v3_2",
+    "tibia_moment_v3_3",
+    "tibia_moment_v3_5",
+    "tibia_moment_v3_1",
+    "tibia_moment_v3_4",
+    "tibia_moment_v3",
+    "servo_cpy_8",
+    "servo_cpy_10",
+    "servo_cpy_15",
+    "servo_cpy_5",
+    "servo_cpy_14",
+    "servo_cpy"
+  ],
+  "total_mass_kg": 5.999999772757292,
+  "joints": [
+    {
+      "index": 0,
+      "name": "revolute_1",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 1,
+      "name": "revolute_1_1",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 2,
+      "name": "revolute_1_2",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 3,
+      "name": "revolute_1_3",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 4,
+      "name": "revolute_1_4",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 5,
+      "name": "revolute_1_5",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 6,
+      "name": "revolute_2",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 7,
+      "name": "revolute_2_1",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 8,
+      "name": "revolute_2_2",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 9,
+      "name": "revolute_2_3",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 10,
+      "name": "revolute_2_4",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 11,
+      "name": "revolute_2_5",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 12,
+      "name": "revolute_3",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 13,
+      "name": "revolute_3_1",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 14,
+      "name": "revolute_3_2",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 15,
+      "name": "revolute_3_3",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 16,
+      "name": "revolute_3_4",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    },
+    {
+      "index": 17,
+      "name": "revolute_3_5",
+      "default_position_rad": 0.0,
+      "lower_limit_rad": -Infinity,
+      "upper_limit_rad": Infinity
+    }
+  ],
+  "bodies": [
+    {
+      "index": 0,
+      "name": "root",
+      "mass_kg": 5.840860366821289
+    },
+    {
+      "index": 1,
+      "name": "arm2_moment_v2_2",
+      "mass_kg": 0.0074435044080019
+    },
+    {
+      "index": 2,
+      "name": "arm2_moment_v2_3",
+      "mass_kg": 0.0074435044080019
+    },
+    {
+      "index": 3,
+      "name": "arm2_moment_v2_5",
+      "mass_kg": 0.0074435044080019
+    },
+    {
+      "index": 4,
+      "name": "arm2_moment_v2_1",
+      "mass_kg": 0.0074435044080019
+    },
+    {
+      "index": 5,
+      "name": "arm2_moment_v2_4",
+      "mass_kg": 0.0074435044080019
+    },
+    {
+      "index": 6,
+      "name": "arm2_moment_v2",
+      "mass_kg": 0.0074435044080019
+    },
+    {
+      "index": 7,
+      "name": "tibia_moment_v3_2",
+      "mass_kg": 0.010146163403987885
+    },
+    {
+      "index": 8,
+      "name": "tibia_moment_v3_3",
+      "mass_kg": 0.010146163403987885
+    },
+    {
+      "index": 9,
+      "name": "tibia_moment_v3_5",
+      "mass_kg": 0.010146163403987885
+    },
+    {
+      "index": 10,
+      "name": "tibia_moment_v3_1",
+      "mass_kg": 0.010146163403987885
+    },
+    {
+      "index": 11,
+      "name": "tibia_moment_v3_4",
+      "mass_kg": 0.010146163403987885
+    },
+    {
+      "index": 12,
+      "name": "tibia_moment_v3",
+      "mass_kg": 0.010146163403987885
+    },
+    {
+      "index": 13,
+      "name": "servo_cpy_8",
+      "mass_kg": 0.008933566510677338
+    },
+    {
+      "index": 14,
+      "name": "servo_cpy_10",
+      "mass_kg": 0.008933566510677338
+    },
+    {
+      "index": 15,
+      "name": "servo_cpy_15",
+      "mass_kg": 0.008933566510677338
+    },
+    {
+      "index": 16,
+      "name": "servo_cpy_5",
+      "mass_kg": 0.008933566510677338
+    },
+    {
+      "index": 17,
+      "name": "servo_cpy_14",
+      "mass_kg": 0.008933566510677338
+    },
+    {
+      "index": 18,
+      "name": "servo_cpy",
+      "mass_kg": 0.008933566510677338
+    }
+  ]
+}

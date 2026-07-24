@@ -66,7 +66,7 @@ simulation_app = app_launcher.app
 # torch is used for tensors.
 # Isaac Lab stores robot states, actions, joint positions, etc. as tensors.
 import torch
-
+import math
 # sim_utils contains simulation config objects:
 # ground planes, lights, USD spawning, physics settings, etc.
 import isaaclab.sim as sim_utils
@@ -83,6 +83,8 @@ from isaaclab.assets import ArticulationCfg, AssetBaseCfg
 # They let you define a scene with ground, lights, robots, etc.
 from isaaclab.scene import InteractiveScene, InteractiveSceneCfg
 
+import json
+from pathlib import Path
 
 # ------------------------------------------------------------
 # 4. Path to your imported hexapod USD
@@ -90,11 +92,13 @@ from isaaclab.scene import InteractiveScene, InteractiveSceneCfg
 
 # This is the USD file you created from the URDF converter.
 # The r before the string means "raw string", so Windows backslashes work.
-GERONIMO_USD = r"C:\Users\Johnt\OneDrive\Desktop\Hexapod\assets_v3\geronimo_v3_collision.usd"
+GERONIMO_USD = r"C:\Users\Johnt\OneDrive\Desktop\Hexapod\assets_v3\geronimo_v3_collision_heavy.usd"
 # ------------------------------------------------------------
 # 5. Define Geronimo as an Isaac Lab articulation
 # ------------------------------------------------------------
-
+PROJECT_ROOT = Path(
+    r"C:\Users\Johnt\OneDrive\Desktop\GitHub_Geronimo\Geronimo_Project"
+)
 # ArticulationCfg tells Isaac Lab:
 # "This is a robot with movable joints."
 GERONIMO_CFG = ArticulationCfg(
@@ -255,6 +259,124 @@ def run_simulator(sim: sim_utils.SimulationContext, scene: InteractiveScene):
 
             # Tell the scene that everything has been reset.
             scene.reset()
+
+            joint_limits = getattr(robot.data, "soft_joint_pos_limits", None)
+            if joint_limits is None:
+                joint_limits = robot.data.joint_pos_limits
+
+            joint_report = []
+
+            for joint_index, joint_name in enumerate(robot.joint_names):
+                lower_limit = joint_limits[0, joint_index, 0].item()
+                upper_limit = joint_limits[0, joint_index, 1].item()
+                default_pos = robot.data.default_joint_pos[0, joint_index].item()
+                joint_report.append(
+                    {
+                        "index": joint_index,
+                        "name": joint_name,
+                        "default_position_rad": default_pos,
+                        "lower_limit_rad": lower_limit,
+                        "upper_limit_rad": upper_limit,
+                    }
+                )
+
+            body_report = []
+
+            for body_index, body_name in enumerate(robot.body_names):
+                mass = robot.data.default_mass[0, body_index].item()
+
+                body_report.append(
+                    {
+                        "index": body_index,
+                        "name": body_name,
+                        "mass_kg": mass,
+                    }
+                )
+
+            report = {
+                "usd_path": GERONIMO_USD,
+                "num_joints": robot.num_joints,
+                "num_bodies": robot.num_bodies,
+                "is_fixed_base": robot.is_fixed_base,
+                "joint_names": robot.joint_names,
+                "body_names": robot.body_names,
+                "total_mass_kg": sum(body["mass_kg"] for body in body_report),
+                "joints": joint_report,
+                "bodies": body_report,
+            }
+            output_path = (PROJECT_ROOT / "experiments" / "results" / "digital_twin_inventory.json")
+
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+            print("\n" + "=" * 70)
+            print("GERONIMO DIGITAL-TWIN INVENTORY")
+            print("=" * 70)
+            print(f"Number of joints: {robot.num_joints}")
+            print(f"Number of bodies: {robot.num_bodies}")
+            print(f"Fixed base: {robot.is_fixed_base}")
+            print(f"Total mass: {report['total_mass_kg']:.4f} kg")
+
+            print("\nJOINTS")
+            for joint in joint_report:
+                print(
+                    f"{joint['index']:2d} | "
+                    f"{joint['name']:<35} | "
+                    f"default={joint['default_position_rad']: .4f} | "
+                    f"limits=[{joint['lower_limit_rad']: .4f}, "
+                    f"{joint['upper_limit_rad']: .4f}]"
+                )
+
+            print("\nBODIES")
+            for body in body_report:
+                print(
+                    f"{body['index']:2d} | "
+                    f"{body['name']:<35} | "
+                    f"mass={body['mass_kg']:.6f} kg"
+                )
+
+            print(f"\nSaved report to: {output_path}")
+            print("=" * 70 + "\n")
+
+            print("\n" + "=" * 60)
+            print("GERONIMO BODY NAMES")
+            print("=" * 60)
+
+            for index, body_name in enumerate(robot.body_names):
+                print(f"{index:2d}: {body_name}")
+
+            print("=" * 60)
+
+            TIBIA_BODY_NAMES = [
+                "tibia_moment_v3",
+                "tibia_moment_v3_1",
+                "tibia_moment_v3_2",
+                "tibia_moment_v3_3",
+                "tibia_moment_v3_4",
+                "tibia_moment_v3_5",
+            ]
+
+            tibia_ids, tibia_names = robot.find_bodies(
+                TIBIA_BODY_NAMES,
+                preserve_order=True,
+            )
+
+            root_position = robot.data.root_pos_w[0]
+
+            print("\n" + "=" * 70)
+            print("TIBIA POSITIONS RELATIVE TO THE ROBOT BODY")
+            print("=" * 70)
+            for body_id, body_name in zip(tibia_ids, tibia_names):
+                relative_position = (
+                    robot.data.body_pos_w[0, body_id] - root_position
+                )
+
+                x = relative_position[0].item()
+                y = relative_position[1].item()
+                z = relative_position[2].item()
+                print(
+                    f"{body_name:<25} "
+                    f"x={x: .4f}, y={y: .4f}, z={z: .4f}"
+                )
 
             print("[INFO] Reset Geronimo.")
 

@@ -1,0 +1,8 @@
+feet:
+  front_right: tibia_moment_v3_1
+  middle_right: tibia_moment_v3_4
+  back_right: tibia_moment_v3_2
+
+  front_left: tibia_moment_v3
+  middle_left: tibia_moment_v3_5
+  back_left: tibia_moment_v3_3
