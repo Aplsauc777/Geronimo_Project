@@ -11,7 +11,7 @@ class HexapodPPORunnerCfg(RslRlOnPolicyRunnerCfg):
     num_steps_per_env = 24
     max_iterations = 1500
     save_interval = 50
-    experiment_name = "hexapod_scratch"
+    experiment_name = "geronimo_standing_v2"
     run_name = ""
     empirical_normalization = False
     obs_groups = {
@@ -23,7 +23,7 @@ class HexapodPPORunnerCfg(RslRlOnPolicyRunnerCfg):
     check_for_nan = True
 
     policy = RslRlPpoActorCriticCfg(
-        init_noise_std=0.5,
+        init_noise_std=0.3,
         actor_obs_normalization=False,
         critic_obs_normalization=False,
         actor_hidden_dims=[256, 256, 128],

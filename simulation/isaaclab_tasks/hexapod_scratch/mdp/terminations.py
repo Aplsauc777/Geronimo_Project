@@ -1,13 +1,4 @@
-# ------------------------------------------------------------
-# terminations.py
-#
-# Purpose:
-# These functions decide when an episode should end.
-#
-# For the hexapod:
-# - End if the body/root gets too close to the ground.
-# - End if the robot tilts/flips too much.
-# ------------------------------------------------------------
+
 
 from __future__ import annotations
 

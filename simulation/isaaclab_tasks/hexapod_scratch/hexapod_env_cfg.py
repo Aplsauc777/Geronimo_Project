@@ -22,12 +22,12 @@ from . import mdp
 GERONIMO_USD = r"C:\Users\Johnt\OneDrive\Desktop\Hexapod\assets_v3\geronimo_v3_collision.usd"
 
 FOOT_BODY_NAMES = [
-    "tibia_moment_v3_1",  # front right
-    "tibia_moment_v3_4",  # middle right
-    "tibia_moment_v3_2",  # back right
-    "tibia_moment_v3",    # front left
-    "tibia_moment_v3_5",  # middle left
-    "tibia_moment_v3_3",  # back left
+    "servo_cpy_8",  # front right
+    "servo_cpy_10",  # middle right
+    "servo_cpy_15",  # back right
+    "servo_cpy_5",    # front left
+    "servo_cpy_14",  # middle left
+    "servo_cpy",  # back left
 ]
 
 FRONT_RIGHT_JOINTS = [
@@ -75,8 +75,12 @@ JOINTS = (
     + BACK_LEFT_JOINTS
 )
 
+STANDING_HEIGHT = 0.165818
+MINIMUM_STANDING_HEIGHT = 0.55 * STANDING_HEIGHT
+
 
 GERONIMO_CFG = ArticulationCfg(
+
     spawn=sim_utils.UsdFileCfg(
         usd_path=GERONIMO_USD,
         activate_contact_sensors=True,
@@ -95,7 +99,7 @@ GERONIMO_CFG = ArticulationCfg(
     ),
 
     init_state=ArticulationCfg.InitialStateCfg(
-        pos=(0.0, 0.0, 1),
+        pos=(0.0, 0.0, 0.3),
     ),
 
     actuators={
@@ -106,6 +110,7 @@ GERONIMO_CFG = ArticulationCfg(
             velocity_limit_sim=20.0,
             stiffness=60.0,
             damping=6.0,
+            armature=0.01,
         )
     },
 )
@@ -124,8 +129,8 @@ class HexapodSceneCfg(InteractiveSceneCfg):
 
     robot: ArticulationCfg = GERONIMO_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
 
-    FOOT_CONTACT_SENSOR = ContactSensorCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/tibia_moment_v3.*",
+    foot_contact_sensor = ContactSensorCfg(
+        prim_path="{ENV_REGEX_NS}/Robot/servo_cpy.*",
         update_period=0.0,
         history_length=3,
         track_air_time=True,
@@ -149,7 +154,7 @@ class ActionsCfg:
     joint_pos = mdp.JointPositionActionCfg(
         asset_name="robot",
         joint_names=JOINTS,
-        scale=math.pi / 2,
+        scale=0.15,
         use_default_offset=True,
         preserve_order=True,
     )
@@ -211,9 +216,37 @@ class ObservationsCfg:
 @configclass
 class EventCfg:
 
-    reset_joints = EventTerm(
-        func=mdp.reset_scene_to_default,
+    reset_root = EventTerm(
+        func=mdp.reset_root_state_uniform,
         mode="reset",
+        params={
+            "pose_range": {
+                "x": (-0.02, 0.02),
+                "y": (-0.02, 0.02),
+                "z": (0.0, 0.01),
+                "roll": (-0.05, 0.05),
+                "pitch": (-0.05, 0.05),
+                "yaw": (-0.05, 0.05),
+            },
+
+            "velocity_range": {
+                "x": (-0.05, 0.05),
+                "y": (-0.05, 0.05),
+                "z": (-0.03, 0.03),
+                "roll": (-0.10, 0.10),
+                "pitch": (-0.10, 0.10),
+                "yaw": (-0.10, 0.10),
+            }
+        }
+    )
+
+    reset_joints = EventTerm(
+        func=mdp.reset_joints_by_offset,
+        mode="reset",
+        params={
+            "position_range": (-0.03, 0.03),
+            "velocity_range": (-0.10, 0.05),
+        }
     )
 
 
@@ -229,15 +262,77 @@ class RewardsCfg:
         weight=1.0,
     )
 
-    termination_penalty = RewTerm(
-        func=mdp.is_terminated,
+    stay_still_xy = RewTerm(
+        func=mdp.track_lin_vel_xy_exp,
+        weight=1.5,
+        params={
+            "command_name": "base_velocity",
+            "std": 0.25
+        }
+    )
+
+    stay_still_yaw = RewTerm(
+        func=mdp.track_ang_vel_z_exp,
+        weight=0.5,
+        params={
+            "command_name": "base_velocity",
+            "std": 0.25,
+        }
+    )
+
+    flat_orientation = RewTerm(
+        func=mdp.flat_orientation_l2,
+        weight=-5.0,
+    )
+
+    base_height = RewTerm(
+        func=mdp.base_height_l2,
+        weight=-20.0,
+        params={
+            "target_height": STANDING_HEIGHT,
+        },
+    )
+
+    vertical_velocity = RewTerm(
+        func=mdp.lin_vel_z_l2,
         weight=-2.0,
+    )
+
+    roll_pitch_velocity = RewTerm(
+        func=mdp.ang_vel_xy_l2,
+        weight=-0.5,
+    )
+
+    joint_deviation = RewTerm(
+        func=mdp.joint_deviation_l1,
+        weight=-0.05,
+    )
+
+    joint_velocity = RewTerm(
+        func=mdp.joint_vel_l2,
+        weight=-0.001,
     )
 
     action_rate = RewTerm(
         func=mdp.action_rate_l2,
         weight=-0.01,
     )
+
+    action_magnitude = RewTerm(
+        func=mdp.action_l2,
+        weight=-0.001,
+    )
+    joint_limits = RewTerm(
+        func=mdp.joint_pos_limits,
+        weight=-5.0
+    )
+
+    termination_penalty = RewTerm(
+        func=mdp.is_terminated,
+        weight=-5.0,
+    )
+
+
 
     # forward_progress = RewTerm(
     #     func=hex_rewards.forward_progress_reward,
@@ -323,21 +418,19 @@ class TerminationsCfg:
         time_out=True,
     )
 
-    # body_low = DoneTerm(
-    #     func=hex_terminations.body_too_low,
-    #     params={
-    #         "min_height": 0.12,
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
+    base_too_low = DoneTerm(
+        func=mdp.root_height_below_minimum,
+        params={
+            "minimum_height": MINIMUM_STANDING_HEIGHT,
+        },
+    )
 
-    # bad_orientation = DoneTerm(
-    #     func=hex_terminations.bad_orientation,
-    #     params={
-    #         "max_tilt": 0.8,
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
+    tipped_over = DoneTerm(
+        func=mdp.bad_orientation,
+        params={
+            "max_tilt": 0.8,
+        },
+    )
 
 
 
@@ -364,6 +457,6 @@ class HexapodEnvCfg(ManagerBasedRLEnvCfg):
         self.dim_dt = 1.0 / 120.0
         self.decimation = 4
         self.sim.render_interval = self.decimation
-        self.episode_length_s = 10.0
+        self.episode_length_s = 20.0
         self.viewer.eye = (2.5, 2.5, 1.5)
         self.viewer.lookat = (0.0, 0.0, 0.25)
