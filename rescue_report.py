@@ -149,10 +149,6 @@ def main():
     last_print = 0.0
 
     while True:
-
-        if frame is None:
-            break
-
         ok, frame = cap.read()
         if not ok:
             break
