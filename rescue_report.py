@@ -12,7 +12,7 @@ from ultralytics import YOLO
 
 L_SHOULDER, R_SHOULDER, L_HIP, R_HIP = 5, 6, 11, 12
 TORSO_KPTS = [L_SHOULDER, R_SHOULDER, L_HIP, R_HIP]
-KP_THRESH, CONF_THRESH = 0.5
+KP_THRESH = 0.5
 REAL_H = 1.82
 FOCAL_PX = (287 * 1) / REAL_H
 
@@ -159,7 +159,7 @@ def main():
         
         results = model.track(
             frame, persist = True, classes=[0],
-            conf = 0.5, tracker = "bytrack.yaml", verbose = False
+            conf = 0.5, tracker = "bytetrack.yaml", verbose = False
         )
         
         boxes = results[0].boxes
