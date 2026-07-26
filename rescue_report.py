@@ -7,6 +7,8 @@ import cv2
 import numpy as np
 
 import math
+from ultralytics import YOLO
+
 
 L_SHOULDER, R_SHOULDER, L_HIP, R_HIP = 5, 6, 11, 12
 TORSO_KPTS = [L_SHOULDER, R_SHOULDER, L_HIP, R_HIP]
@@ -14,14 +16,7 @@ KP_THRESH, CONF_THRESH = 0.5
 REAL_H = 1.82
 FOCAL_PX = (287 * 1) / REAL_H
 
-USE_AI_CAMERA = False 
 
-if USE_AI_CAMERA:
-    from picamera2 import Picamera2
-    from picamera2.devices import IMX500
-    from boxmot import ByteTrack
-else:
-    from ultralytics import YOLO
 
 @dataclass
 class RescueReport:
@@ -68,67 +63,6 @@ def choose_target(id_to_box):
     return max(id_to_box, 
                 key = lambda tid: id_to_box[tid][2] * id_to_box[tid][3]
     )
-
-def read_from_webcam(model, cap):
-    ok, frame = cap.read()
-    if not ok:
-        return None, {}
-    
-    res = model.track(frame, persist=True, classes=[0], conf=0.4, tracker='bytetrack.yaml',verbose = False)[0]
-
-    people = {}
-    boxes = res.boxes
-    if boxes is not None and boxes.id is not None:
-        xywh = boxes.xywh.cpu().numpy()
-        confs = boxes.conf.cpu().numpy()
-        ids = boxes.id.int().cpu().tilist()
-        kp = res.keypoints
-        has_kp = kp is not None and kp.conf is not None
-        kxy = kp.xy.cpu().numpy() if has_kp else None
-        kcf = kp.conf.cpu().numpy if has_kp else None
-        for i, tid in enumerate(ids):
-            people[tid] = {
-                "box": xywh[i], 
-                "conf": float(confs[i]),
-                "kxy": kxy[i] if has_kp else None,
-                "kcf": kcf[i] if has_kp else None,
-            }
-        return frame, people
-
-def read_from_sensor(imx500, picam2, tracker):
-    req = picam2.capture_request()
-    frame = req.make_array("main")
-    meta = req.get_metadata()
-    req.release()
-
-    outputs = imx500.get_outputs(meta) #Raw detection output (not mode.track())
-    dets = parse_outputs(outputs, meta, imx500, picam2)
-
-    people = {}
-    if len(dets):
-        for t in tracker.update(dets, frame): #BoxMOT's ByteTrack
-            x1, y1, x2, y2, tid = t[0], t[1], t[2], t[3], int(t[4])
-            people[tid] = {
-                "box": np.array([(x1+x2)/2, (y1+y2)/2, x2-x1, y2-y1]),
-                "conf": float(t[5]) if len(t) > 5 else 1.0,
-                "kxy": None, "kcf": None
-            }
-        return frame, people
-    
-def parse_outputs(outputs, meta, imx500, picam2):
-    if outputs is None:
-        return [], []
-    boxes_raw, scores, kpts_raw = outputs[0], outputs[1], outputs[2]
-    dets, kpts = [], []
-    for b, s, k in zip (boxes_raw, scores, kpts_raw):
-        if s < CONF_THRESH:
-            continue
-        x, y, w, h = imx500.convert_inference_coords(b, meta, picam2)
-        dets.append([x ,y, x + w, y + h, float(s), 0])
-        person_kpts = [(kx * w, ky * h, kc) for kx, ky, kc, in k]
-        kpts.append(person_kpts)
-
-    return dets, kpts
 
 
 def estimate_posture(kpts_xy, kpts_conf, box, kp_thresh = 0.5):
@@ -207,24 +141,15 @@ def draw_torso_debug(frame, kpts_xy, kpts_conf):
     cv2.putText(frame, f"dx = {dx} dy = {dy} angle = {angle:.1f}deg", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), thickness = 2)
 
 def main():
-    if USE_AI_CAMERA:
-        imx500 = IMX500("network.rpk")
-        picam2 = Picamera2(imx500.camera_num)
-        picam2.start()
-        tracker = ByteTrack
-    else:
-        model = YOLO("yolo11n-pose.pt")
-        cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+    model = YOLO("yolo11n-pose.pt")
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
     locked_id = None
     last_print = 0.0
 
     while True:
 
-        if USE_AI_CAMERA:
-            frame, people = read_from_sensor(imx500, picam2, tracker)
-        else:
-            frame, people = read_from_webcam(model, cap)
         if frame is None:
             break
 
@@ -236,7 +161,10 @@ def main():
             print("Cannot open camera")
             return
         
-        results = model.track(frame)
+        results = model.track(
+            frame, persist = True, classes=[0],
+            conf = 0.5, tracker = "bytrack.yaml", verbose = False
+        )
         
         boxes = results[0].boxes
 
@@ -297,10 +225,7 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-        
-
-    if USE_AI_CAMERA:
-        picam2.stop()
+    cap.release()
     cv2.destroyAllWindows()
 
 
