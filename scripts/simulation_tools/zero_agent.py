@@ -44,6 +44,13 @@ def main():
     env_cfg = parse_env_cfg(
         args_cli.task, device=args_cli.device, num_envs=args_cli.num_envs, use_fabric=not args_cli.disable_fabric
     )
+
+    print("\n" + "=" * 80)
+    print("RUNTIME ENVIRONMENT CONFIGURATION")
+    print("=" * 80)
+    print(f"USD path: {env_cfg.scene.robot.spawn.usd_path}")
+    print(f"Physics dt: {env_cfg.sim.dt}")
+    print("=" * 80)
     # create environment
     env = gym.make(args_cli.task, cfg=env_cfg)
 
@@ -54,6 +61,7 @@ def main():
     env.reset()
 
     foot_sensor = env.unwrapped.scene["foot_contact_sensor"]
+
     print("\nFoot sensor body order:")
     for index, body_name in enumerate(foot_sensor.body_names):
         print(f"{index}: {body_name}")
@@ -79,15 +87,9 @@ def main():
                 force_magnitudes = torch.linalg.vector_norm(forces, dim=-1)
 
                 print("\nFOOT CONTACT FORCES")
+                for body_name, force_mag in zip(foot_sensor.body_names, force_magnitudes):
+                    print(f"{body_name}: {force_mag.item()}")
 
-                for body_name, force in zip(foot_sensor.body_names, force_magnitudes):
-                    touching = force.item() > 0.5
-
-                    print(
-                        f"{body_name:<25} "
-                        f"force={force.item():7.3f} N | "
-                        f"contact={touching}"
-                    )
             step_count += 1
 
             
