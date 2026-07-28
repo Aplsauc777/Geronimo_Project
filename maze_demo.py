@@ -192,11 +192,14 @@ def main():
 
     # --- optional camera ----------------------------------------------------
     camera = None
+    FRONT_OFFSET_DEG = -90.0
+    _h = math.radians(FRONT_OFFSET_DEG) / 2
+    FRONT_QUAT = (math.cos(_h), 0.0, 0.0, math.sin(_h))
     if args_cli.camera:
         camera = Camera(CameraCfg(
             prim_path="/World/Robot/root/head_cam",
             offset=CameraCfg.OffsetCfg(pos=(0.10, 0.0, 0.12),
-                                       rot=(1.0, 0.0, 0.0, 0.0), convention="world"),
+                                       rot=FRONT_QUAT, convention="world"),
             data_types=["rgb"],
             spawn=sim_utils.PinholeCameraCfg(
                 focal_length=24.0, focus_distance=400.0,
@@ -232,8 +235,7 @@ def main():
                          1.0 - 2.0 * (quat[2] ** 2 + quat[3] ** 2))
         rel = hits[:, :2] - origin[:2]
         distances = np.linalg.norm(rel, axis=1)
-        angles = np.arctan2(rel[:, 1], rel[:, 0]) - yaw
-
+        angles = np.arctan2(rel[:, 1], rel[:, 0]) - yaw - math.radians(FRONT_OFFSET_DEG)
         state = analyze_surroundings(angles, distances, max_range=6.0)
         fwd, yawcmd = choose_heading(state)
 
