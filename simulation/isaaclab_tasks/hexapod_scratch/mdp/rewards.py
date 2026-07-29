@@ -67,11 +67,6 @@ def tripod_reference_tracking_exp(env: ManagerBasedRLEnv, std: float, asset_cfg:
 
     return torch.exp(-error / (std * std))
 
-def gait_phase_observation(env: ManagerBasedRLEnv, cycle_time: float) -> torch.Tensor:
-    time = (env.episode_length_buf.float() * env.step_dt)
-    phase = time / cycle_time * 1.0
-    angle = 2.0 * math.pi * phase
-    return torch.stack((torch.sin(angle), torch.cos(angle)), dim=-1)
 
 
 def track_lateral_velocity_exp(env: ManagerBasedRLEnv, command_name: str, std: float, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:

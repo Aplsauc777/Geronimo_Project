@@ -47,7 +47,7 @@ def _desired_tripod_stance(env: ManagerBasedRLEnv, cycle_time: float, duty_facto
     foot_phases = torch.remainder(global_phase.unsqueeze(1) + offsets, 1.0)
     return foot_phases < duty_factor
 
-def tripod_swing_force_reward(env: ManagerBasedRLEnv, command_name: str, sensor_cfg: SceneEntityCfg, cycle_time: float, duty_factor: float = 0.55, force_std: float = 1.0, command_threshold: float = 0.1) -> torch.Tensor:
+def tripod_swing_force_reward(env: ManagerBasedRLEnv, command_name: str, sensor_cfg: SceneEntityCfg, cycle_time: float, duty_factor: float = 0.55, force_std: float = 1.0, phase_transition_fraction: float = 0.08, command_threshold: float = 0.1) -> torch.Tensor:
     if force_std <= 0.0:
         raise ValueError("you do know that force_std has to be positive right?")
 
@@ -61,45 +61,43 @@ def tripod_swing_force_reward(env: ManagerBasedRLEnv, command_name: str, sensor_
 
     swing_weight = 1.0 - stance_weight
     per_foot_reward = torch.exp(-torch.square(force_magnitude / force_std))
-    reward = torch.sum(per_foot_reward * swing_weight, dim=1)
-    reward /= torch.sum(swing_weight, dim=1).clamp(min=1)
+
+    swing_count = swing_weight.sum(dim=1).clamp(min=1.0)
+    reward = (per_foot_reward * swing_weight).sum(dim=1) / swing_count
+
 
     command = env.command_manager.get_command(command_name)
     command_magnitude = torch.linalg.vector_norm(command, dim=1)
     moving_command = command_magnitude > command_threshold
-    return reward * moving_command
+    return reward * moving_command.to(reward.dtype)
 
-def tripod_stance_velocity_reward(env: ManagerBasedRLEnv, command_name: str, asset_cfg: SceneEntityCfg, sensor_cfg: SceneEntityCfg, cycle_time: float, duty_factor: float = 0.55, velocity_std: float = 0.05, contact_threshold: float = 1.0, command_threshold: float = 0.1) -> torch.Tensor:
+def tripod_stance_velocity_reward(env: ManagerBasedRLEnv, command_name: str, asset_cfg: SceneEntityCfg, sensor_cfg: SceneEntityCfg, cycle_time: float, duty_factor: float = 0.55, velocity_std: float = 0.05, contact_threshold: float = 1.0, transition_width: float = 0.2, phase_transition_fraction: float = 0.08, command_threshold: float = 0.1) -> torch.Tensor:
     if velocity_std <= 0.0:
         raise ValueError("you do know that velocity_std has to be positive right?")
 
     robot: Articulation = env.scene[asset_cfg.name]
     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]
-    desired_stance = _desired_tripod_stance(env, cycle_time, duty_factor)
+    stance_weight = _smooth_tripod_stance_weight(env, cycle_time, duty_factor, phase_transition_fraction)
 
     foot_velocity_xy = robot.data.body_lin_vel_w[:, asset_cfg.body_ids, :2]
     velocity_error = torch.sum(torch.square(foot_velocity_xy), dim=-1)
     force_history = contact_sensor.data.net_forces_w_history[:, :, sensor_cfg.body_ids, :]
     force_magnitude = torch.linalg.vector_norm(force_history, dim=-1).max(dim=1).values
-    if desired_stance.shape[1] != foot_velocity_xy.shape[1]:
-        raise RuntimeError("it is missing some of the six bodies")
-    if desired_stance.shape[1] != force_magnitude.shape[1]:
-        raise RuntimeError("six contact sensor bodies are expected")
 
-    is_contact = (force_magnitude > contact_threshold).to(foot_velocity_xy.dtype)
+    contact_score = torch.sigmoid((force_magnitude - contact_threshold) / transition_width)
     low_velocity_score = torch.exp(-velocity_error / (velocity_std * velocity_std))
 
-    per_foot_reward = low_velocity_score * is_contact
+    per_foot_score = low_velocity_score * contact_score
 
-    stance_mask = desired_stance.to(per_foot_reward.dtype)
-    stance_count = stance_mask.sum(dim=1).clamp(min=1.0)
-    reward = (per_foot_reward * stance_mask).sum(dim=1) / stance_count
+    stance_count = stance_weight.sum(dim=1).clamp(min=1.0)
+    reward = (per_foot_score * stance_weight).sum(dim=1) / stance_count
 
     command = env.command_manager.get_command(command_name)
 
     command_magnitude = torch.linalg.vector_norm(command, dim=1)
     moving_command = command_magnitude > command_threshold
-    return reward * moving_command
+
+    return reward * moving_command.to(reward.dtype)
 
 def tripod_stance_contact_reward(env: ManagerBasedRLEnv, command_name: str, sensor_cfg: SceneEntityCfg, cycle_time: float, duty_factor: float = 0.55, contact_threshold: float = 1.0, transition_width: float = 0.5, worst_foot_weight: float = 0.5, phase_transition_fraction: float = 0.05, command_threshold: float = 0.1) -> torch.Tensor:
     contact_sensor: ContactSensor = env.scene.sensors[sensor_cfg.name]

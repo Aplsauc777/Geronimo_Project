@@ -100,7 +100,7 @@ GERONIMO_CFG = ArticulationCfg(
     ),
 
     init_state=ArticulationCfg.InitialStateCfg(
-        pos=(0.0, 0.0, 0.3),
+        pos=(0.0, 0.0, STANDING_HEIGHT + 0.05),
     ),
 
     actuators={
@@ -134,7 +134,7 @@ class HexapodSceneCfg(InteractiveSceneCfg):
     contact_forces = ContactSensorCfg(
         prim_path="{ENV_REGEX_NS}/Robot/.*",
         update_period=0.0,
-        history_length=3,
+        history_length=4,
         track_air_time=True,
     )
 
@@ -173,7 +173,7 @@ class CommandsCfg:
         ranges=mdp.UniformVelocityCommandCfg.Ranges(
             lin_vel_x=(0.12, 0.22),
             lin_vel_y=(-0.03, 0.03),
-            ang_vel_z=(0.0, 0.0),
+            ang_vel_z=(-0.03, 0.03),
         ),
     )
 
@@ -206,7 +206,7 @@ class ObservationsCfg:
 
         previous_action = ObsTerm(func=mdp.last_action)
 
-        git_phase = ObsTerm(func=mdp.gait_phase_observation, params={"cycle_time": GAIT_CYCLE_TIME})
+        gait_phase = ObsTerm(func=mdp.gait_phase_observation, params={"cycle_time": GAIT_CYCLE_TIME})
 
 
         def __post_init__(self) -> None:
@@ -282,7 +282,7 @@ class RewardsCfg:
         }
     )
 
-    track_yaw_velocity = RewTerm(
+    track_ang_vel_z_exp = RewTerm(
         func=mdp.track_ang_vel_z_exp,
         weight=0.75,
         params={
@@ -299,7 +299,9 @@ class RewardsCfg:
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
             "cycle_time": GAIT_CYCLE_TIME,
             "duty_factor": 0.55,
-            "force_std": 1.0,
+            "force_std": 5.0,
+            "phase_transition_fraction": 0.08,
+            "command_threshold": 0.03,
         },
     )
 
@@ -314,13 +316,15 @@ class RewardsCfg:
             "duty_factor": 0.55,
             "velocity_std": 0.05,
             "contact_threshold": 1.0,
+            "transition_width": 0.2,
+            "phase_transition_fraction": 0.08,
             "command_threshold": 0.03,
         },
     )
 
     tripod_stance_contact = RewTerm(
         func=mdp.tripod_stance_contact_reward,
-        weight=0.15,
+        weight=0.3,
         params={
             "command_name": "base_velocity",
             "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
@@ -334,15 +338,15 @@ class RewardsCfg:
         }
     )
 
-    feet_air_time = RewTerm(
-        func=mdp.feet_air_time,
-        weight=0.05,
-        params={
-            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
-            "command_name": "base_velocity",
-            "threshold": 0.2,
-        },
-    )
+    # feet_air_time = RewTerm(
+    #     func=mdp.feet_air_time,
+    #     weight=0.05,
+    #     params={
+    #         "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
+    #         "command_name": "base_velocity",
+    #         "threshold": 0.2,
+    #     },
+    # )
 
     feet_slide = RewTerm(
         func=mdp.feet_slide,
@@ -383,7 +387,7 @@ class RewardsCfg:
 
     action_rate = RewTerm(
         func=mdp.action_rate_l2,
-        weight=-0.015,
+        weight=-0.01,
     )
 
     joint_limits = RewTerm(

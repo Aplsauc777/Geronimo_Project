@@ -8,7 +8,7 @@ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlPpoActorCriticCfg, R
 class HexapodForwardPPORunnerCfg(RslRlOnPolicyRunnerCfg):
     """here is where I define the PPO config for geronimo"""
 
-    num_steps_per_env = 24
+    num_steps_per_env = 36
     max_iterations = 1500
     save_interval = 50
     experiment_name = "geronimo_forward_ppo"
