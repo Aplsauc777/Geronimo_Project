@@ -60,7 +60,7 @@ def main():
     # reset environment
     env.reset()
 
-    foot_sensor = env.unwrapped.scene["foot_contact_sensor"]
+    foot_sensor = env.unwrapped.scene["contact_forces"]
 
     print("\nFoot sensor body order:")
     for index, body_name in enumerate(foot_sensor.body_names):

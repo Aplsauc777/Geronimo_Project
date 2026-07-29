@@ -12,6 +12,7 @@ from isaaclab.managers import EventTermCfg as EventTerm
 from isaaclab.managers import ObservationGroupCfg as ObsGroup
 from isaaclab.managers import ObservationTermCfg as ObsTerm
 from isaaclab.managers import RewardTermCfg as RewTerm
+from isaaclab.managers import SceneEntityCfg
 from isaaclab.managers import TerminationTermCfg as DoneTerm
 from isaaclab.scene import InteractiveSceneCfg
 from isaaclab.sensors import ContactSensorCfg
@@ -76,14 +77,14 @@ JOINTS = (
 )
 
 STANDING_HEIGHT = 0.165818
-MINIMUM_STANDING_HEIGHT = 0.55 * STANDING_HEIGHT
+MINIMUM_STANDING_HEIGHT = 0.70 * STANDING_HEIGHT
+GAIT_CYCLE_TIME = 1.2
 
 
 GERONIMO_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
         usd_path=GERONIMO_USD,
 
-        # Plural and nested inside UsdFileCfg.
         activate_contact_sensors=True,
 
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
@@ -126,12 +127,14 @@ class HexapodSceneCfg(InteractiveSceneCfg):
         spawn=sim_utils.GroundPlaneCfg(size=(100.0, 100.0)),
     )
 
-    robot: ArticulationCfg = GERONIMO_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+    robot: ArticulationCfg = GERONIMO_CFG.replace(
+        prim_path="{ENV_REGEX_NS}/Robot"
+    )
 
-    foot_contact_sensor = ContactSensorCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/servo_cpy.*",
+    contact_forces = ContactSensorCfg(
+        prim_path="{ENV_REGEX_NS}/Robot/.*",
         update_period=0.0,
-        history_length=6,
+        history_length=3,
         track_air_time=True,
     )
 
@@ -162,14 +165,14 @@ class ActionsCfg:
 class CommandsCfg:
     base_velocity = mdp.UniformVelocityCommandCfg(
         asset_name="robot",
-        resampling_time_range=(6.0, 10.0),
-        rel_standing_envs=1.0,
+        resampling_time_range=(8.0, 12.0),
+        rel_standing_envs=0.05,
         rel_heading_envs=0.0,
         heading_command=False,
         debug_vis=True,
         ranges=mdp.UniformVelocityCommandCfg.Ranges(
-            lin_vel_x=(0.0, 0.0),
-            lin_vel_y=(0.0, 0.0),
+            lin_vel_x=(0.12, 0.22),
+            lin_vel_y=(-0.03, 0.03),
             ang_vel_z=(0.0, 0.0),
         ),
     )
@@ -183,7 +186,7 @@ class ObservationsCfg:
     @configclass
     class PolicyCfg(ObsGroup):
 
-      
+
         base_lin_vel = ObsTerm(func=mdp.base_lin_vel)
 
    
@@ -202,6 +205,9 @@ class ObservationsCfg:
         joint_velocities = ObsTerm(func=mdp.joint_vel_rel)
 
         previous_action = ObsTerm(func=mdp.last_action)
+
+        git_phase = ObsTerm(func=mdp.gait_phase_observation, params={"cycle_time": GAIT_CYCLE_TIME})
+
 
         def __post_init__(self) -> None:
             self.enable_corruption = False
@@ -232,9 +238,9 @@ class EventCfg:
                 "x": (-0.05, 0.05),
                 "y": (-0.05, 0.05),
                 "z": (-0.03, 0.03),
-                "roll": (-0.10, 0.10),
-                "pitch": (-0.10, 0.10),
-                "yaw": (-0.10, 0.10),
+                "roll": (-0.1, 0.1),
+                "pitch": (-0.1, 0.1),
+                "yaw": (-0.1, 0.1),
             }
         }
     )
@@ -244,7 +250,7 @@ class EventCfg:
         mode="reset",
         params={
             "position_range": (-0.03, 0.03),
-            "velocity_range": (-0.10, 0.05),
+            "velocity_range": (-0.1, 0.1),
         }
     )
 
@@ -256,154 +262,148 @@ class RewardsCfg:
     """The creates the rewards for geronimo"""
 
 
-    alive = RewTerm(
-        func=mdp.is_alive,
-        weight=1.0,
+
+    track_lateral_velocity = RewTerm(
+        func=mdp.track_lateral_velocity_exp,
+        weight=0.5,
+        params={
+            "command_name": "base_velocity",
+            "std": 0.03,
+            "asset_cfg": SceneEntityCfg("robot"),
+        },
     )
 
-    stay_still_xy = RewTerm(
+    track_forward_velocity = RewTerm(
         func=mdp.track_lin_vel_xy_exp,
         weight=1.5,
         params={
             "command_name": "base_velocity",
-            "std": 0.25
+            "std": 0.15,
         }
     )
 
-    stay_still_yaw = RewTerm(
+    track_yaw_velocity = RewTerm(
         func=mdp.track_ang_vel_z_exp,
-        weight=0.5,
+        weight=0.75,
         params={
             "command_name": "base_velocity",
-            "std": 0.25,
+            "std": 0.1,
         }
     )
+
+    tripod_swing_force = RewTerm(
+        func=mdp.tripod_swing_force_reward,
+        weight=0.2,
+        params={
+            "command_name": "base_velocity",
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
+            "cycle_time": GAIT_CYCLE_TIME,
+            "duty_factor": 0.55,
+            "force_std": 1.0,
+        },
+    )
+
+    tripod_stance_velocity = RewTerm(
+        func=mdp.tripod_stance_velocity_reward,
+        weight=0.2,
+        params={
+            "command_name": "base_velocity",
+            "asset_cfg": SceneEntityCfg("robot", body_names=FOOT_BODY_NAMES, preserve_order=True),
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
+            "cycle_time": GAIT_CYCLE_TIME,
+            "duty_factor": 0.55,
+            "velocity_std": 0.05,
+            "contact_threshold": 1.0,
+            "command_threshold": 0.03,
+        },
+    )
+
+    tripod_stance_contact = RewTerm(
+        func=mdp.tripod_stance_contact_reward,
+        weight=0.15,
+        params={
+            "command_name": "base_velocity",
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
+            "cycle_time": GAIT_CYCLE_TIME,
+            "duty_factor": 0.55,
+            "contact_threshold": 1.0,
+            "transition_width": 0.2,
+            "worst_foot_weight": 0.4,
+            "phase_transition_fraction": 0.05,
+            "command_threshold": 0.03,
+        }
+    )
+
+    feet_air_time = RewTerm(
+        func=mdp.feet_air_time,
+        weight=0.05,
+        params={
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
+            "command_name": "base_velocity",
+            "threshold": 0.2,
+        },
+    )
+
+    feet_slide = RewTerm(
+        func=mdp.feet_slide,
+        weight=-0.05,
+        params={
+            "sensor_cfg": SceneEntityCfg("contact_forces", body_names=FOOT_BODY_NAMES, preserve_order=True),
+            "asset_cfg": SceneEntityCfg("robot", body_names=FOOT_BODY_NAMES, preserve_order=True),
+        },
+    )
+
+    # alive = RewTerm(
+    #     func=mdp.is_alive,
+    #     weight=0.15,
+    # )
 
     flat_orientation = RewTerm(
         func=mdp.flat_orientation_l2,
-        weight=-5.0,
+        weight=-0.5,
     )
 
     base_height = RewTerm(
         func=mdp.base_height_l2,
-        weight=-20.0,
+        weight=-2.0,
         params={
             "target_height": STANDING_HEIGHT,
-        },
+        }
     )
 
     vertical_velocity = RewTerm(
         func=mdp.lin_vel_z_l2,
-        weight=-2.0,
+        weight=-0.5,
     )
 
     roll_pitch_velocity = RewTerm(
         func=mdp.ang_vel_xy_l2,
-        weight=-0.5,
-    )
-
-    joint_deviation = RewTerm(
-        func=mdp.joint_deviation_l1,
         weight=-0.05,
-    )
-
-    joint_velocity = RewTerm(
-        func=mdp.joint_vel_l2,
-        weight=-0.001,
     )
 
     action_rate = RewTerm(
         func=mdp.action_rate_l2,
-        weight=-0.01,
+        weight=-0.015,
     )
 
-    action_magnitude = RewTerm(
-        func=mdp.action_l2,
-        weight=-0.001,
-    )
     joint_limits = RewTerm(
         func=mdp.joint_pos_limits,
-        weight=-5.0
+        weight=-1.0,
     )
 
     termination_penalty = RewTerm(
         func=mdp.is_terminated,
-        weight=-5.0,
+        weight=-10.0,
     )
 
+    joint_acceleration = RewTerm(
+        func=mdp.joint_acc_l2,
+        weight=-2.0e-7,
+        params={
+            "asset_cfg": SceneEntityCfg("robot", joint_names=JOINTS, preserve_order=True),
+        },
+    )
 
-
-    # forward_progress = RewTerm(
-    #     func=hex_rewards.forward_progress_reward,
-    #     weight=6.0,
-    #     params={
-    #         "target_speed": 0.35,
-    #         "direction": (1.0, 0.0),
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
-
-    # forward_speed = RewTerm(
-    #     func=hex_rewards.track_forward_speed,
-    #     weight=2.0,
-    #     params={
-    #         "target_speed": 0.25,
-    #         "direction": (1.0, 0.0),
-    #         "std": 0.15,
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
-
-    # standing_still = RewTerm(
-    #     func=hex_rewards.standing_still_penalty,
-    #     weight=-2.0,
-    #     params={
-    #         "min_speed": 0.08,
-    #         "direction": (1.0, 0.0),
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
-
-    # upright = RewTerm(
-    #     func=hex_rewards.upright_reward,
-    #     weight=0.8,
-    #     params={
-    #         "std": 0.5,
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
-
-    # body_height = RewTerm(
-    #     func=hex_rewards.body_height_reward,
-    #     weight=0.8,
-    #     params={
-    #         "target_height": 0.30,
-    #         "min_height": 0.18,
-    #         "std": 0.20,
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
-
-    # action_smoothness = RewTerm(
-    #     func=hex_rewards.action_smoothness_penalty,
-    #     weight=-0.05,
-    # )
-
-    # joint_velocity = RewTerm(
-    #     func=hex_rewards.joint_velocity_penalty,
-    #     weight=-0.001,
-    #     params={
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
-
-    # yaw_spin = RewTerm(
-    #     func=hex_rewards.yaw_spin_penalty,
-    #     weight=-0.02,
-    #     params={
-    #         "asset_cfg": SceneEntityCfg("robot"),
-    #     },
-    # )
 
 
 
@@ -427,7 +427,7 @@ class TerminationsCfg:
     tipped_over = DoneTerm(
         func=mdp.bad_orientation,
         params={
-            "max_tilt": 0.8,
+            "limit_angle": 0.8,
         },
     )
 
@@ -435,12 +435,11 @@ class TerminationsCfg:
 
 
 @configclass
-class HexapodEnvCfg(ManagerBasedRLEnvCfg):
+class HexapodForwardEnvCfg(ManagerBasedRLEnvCfg):
 
     scene: HexapodSceneCfg = HexapodSceneCfg(
-        num_envs=4,
+        num_envs=1024,
         env_spacing=3.0,
-        # clone_in_fabric=True,
     )
 
     observations: ObservationsCfg = ObservationsCfg()
@@ -457,5 +456,6 @@ class HexapodEnvCfg(ManagerBasedRLEnvCfg):
         self.decimation = 4
         self.sim.render_interval = self.decimation
         self.episode_length_s = 20.0
+        self.scene.contact_forces.update_period = self.sim.dt
         self.viewer.eye = (2.5, 2.5, 1.5)
         self.viewer.lookat = (0.0, 0.0, 0.25)

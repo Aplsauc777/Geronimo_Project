@@ -8,6 +8,20 @@ from isaaclab.assets import Articulation
 from isaaclab.envs import ManagerBasedRLEnv
 from isaaclab.managers import SceneEntityCfg
 
+# from . import mdp
+
+# def feet_air_time_with_progress(env: ManagerBasedRLEnv, command_name: str, sensor_cfg: SceneEntityCfg, threshold: float, minimum_speed: float = 0.05) -> torch.Tensor:
+#     air_time_reward = mdp.feet_air_time(env, command_name=command_name, sensor_cfg=sensor_cfg, threshold=threshold)
+
+#     progress = forward_progress_gate(env, minimum_speed=minimum_speed, asset_cfg=sensor_cfg)
+
+#     return air_time_reward * progress
+
+# def forward_progress_gate(env: ManagerBasedRLEnv, minimum_speed: float = 0.05, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
+#     robot = env.scene[asset_cfg.name]
+#     forward_speed = robot.data.root_lin_vel_b[:, 0]
+#     return torch.clamp(forward_speed / minimum_speed, min=0.0, max=1.0)
+
 def track_forward_speed_exp(env: ManagerBasedRLEnv, target_speed: float, std: float, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
     robot: Articulation = env.scene[asset_cfg.name]
     actual_forward_spped = robot.data.root_lin_vel_b[:, 0]
@@ -28,9 +42,9 @@ def body_height_exp(env: ManagerBasedRLEnv, target_height: float, std: float, as
     height_error = torch.square(actual_height - target_height)
     return torch.exp(-height_error / (std * std))
 
-def lateral_velocity_12(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
+def lateral_velocity_l2(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
     robot: Articulation = env.scene[asset_cfg.name]
-    return torch.square(robot.data.root_lin_vel_b[:, 2])
+    return torch.square(robot.data.root_lin_vel_b[:, 1])
 
 def roll_pitch_rate_12(env: ManagerBasedRLEnv, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
     robot: Articulation = env.scene[asset_cfg.name]
@@ -58,4 +72,13 @@ def gait_phase_observation(env: ManagerBasedRLEnv, cycle_time: float) -> torch.T
     phase = time / cycle_time * 1.0
     angle = 2.0 * math.pi * phase
     return torch.stack((torch.sin(angle), torch.cos(angle)), dim=-1)
-    
+
+
+def track_lateral_velocity_exp(env: ManagerBasedRLEnv, command_name: str, std: float, asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")) -> torch.Tensor:
+    robot: Articulation = env.scene[asset_cfg.name]
+    command = env.command_manager.get_command(command_name)
+    commanded_lateral_velocity = command[:, 1]
+
+    actual_lateral_velocity = robot.data.root_lin_vel_b[:, 1]
+    lateral_error = torch.square(actual_lateral_velocity - commanded_lateral_velocity)
+    return torch.exp(-lateral_error / (std * std))
