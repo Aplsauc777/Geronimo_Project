@@ -1,19 +1,3 @@
-"""
-Geronimo - 360-degree surround awareness.
-
-Tesla-style situational display: take raw distance readings from around the
-robot, bin them into sectors, decide which directions are passable, and draw a
-top-down radar.
-
-DELIBERATELY SENSOR-AGNOSTIC. It takes plain arrays of angles + distances, so
-the same code works with:
-    - Isaac Lab RayCaster (sim)
-    - a real lidar / ToF ring on the hardware
-    - even depth-camera columns converted to angle+distance
-
-Nothing in here imports Isaac Lab or OpenCV-specific sim types, so it lives
-alongside rescue_report.py as pure logic.
-"""
 
 from dataclasses import dataclass
 from typing import List, Optional
@@ -23,12 +7,10 @@ import math
 import cv2
 import numpy as np
 
-# --- tuning ---------------------------------------------------------------
-NUM_SECTORS = 12        # 12 sectors = 30 deg each, like clock positions
-MAX_RANGE = 6.0         # metres - beyond this we treat as "open"
-BLOCK_DIST = 1.2        # closer than this = obstacle in the way
-CLEAR_DIST = 2.5        # farther than this = comfortably open
-
+NUM_SECTORS = 12        
+MAX_RANGE = 6.0        
+BLOCK_DIST = 1.2       
+CLEAR_DIST = 2.5       
 
 @dataclass
 class SurroundState:
@@ -39,7 +21,6 @@ class SurroundState:
     num_sectors: int
     max_range: float
 
-    # Sector 0 is straight ahead; indices increase counter-clockwise.
     def front(self) -> float:
         return self.min_dist[0]
 
@@ -48,7 +29,6 @@ class SurroundState:
         return (360.0 / self.num_sectors) * i
 
     def summary(self) -> str:
-        """One-line text version, handy for the rescue report or a log."""
         names = {0: "front", 3: "left", 6: "rear", 9: "right"}
         parts = []
         for i, name in names.items():
@@ -104,16 +84,12 @@ def choose_heading(state: SurroundState):
     n = state.num_sectors
     front = state.min_dist[0]
 
-    # Comfortably open ahead -> just go.
     if front >= CLEAR_DIST:
         return 0.4, 0.0
 
-    # Slightly tight ahead but not blocked -> creep forward.
     if not state.blocked[0]:
         return 0.15, 0.0
 
-    # Front is blocked. Look at the sectors either side and turn toward
-    # whichever has more space. We only consider the forward hemisphere.
     span = n // 4                       # a quarter turn's worth of sectors
     left_best = max(state.min_dist[1:1 + span])
     right_best = max(state.min_dist[n - span:])
@@ -133,7 +109,6 @@ def draw_radar(state: SurroundState, size: int = 320) -> np.ndarray:
     cx = cy = size // 2
     radius = int(size * 0.42)
 
-    # --- range rings, labelled in metres --------------------------------
     for frac in (0.33, 0.66, 1.0):
         cv2.circle(img, (cx, cy), int(radius * frac), (45, 45, 45), 1)
         metres = state.max_range * frac
@@ -160,19 +135,17 @@ def draw_radar(state: SurroundState, size: int = 320) -> np.ndarray:
         if is_blocked:
             colour = (60, 60, 220)          # red   - in the way
         elif d < CLEAR_DIST:
-            colour = (60, 190, 230)         # amber - tight
+            colour = (60, 190, 230)         # yellow - tight
         else:
             colour = (90, 190, 90)          # green - open
         cv2.ellipse(img, (cx, cy), (r, r), 0.0, start, end, colour, -1)
 
-    # --- sector outlines so the wedges read as distinct ------------------
     for i in range(state.num_sectors):
         ang = math.radians(-state.sector_angle_deg(i) - sector_deg / 2 - 90.0)
         x = int(cx + radius * math.cos(ang))
         y = int(cy + radius * math.sin(ang))
         cv2.line(img, (cx, cy), (x, y), (25, 25, 25), 1)
 
-    # --- the robot, and which way it's facing ---------------------------
     cv2.circle(img, (cx, cy), 9, (240, 240, 240), -1)
     cv2.line(img, (cx, cy), (cx, cy - 22), (240, 240, 240), 2)   # nose = up
     cv2.putText(img, "FWD", (cx - 14, cy - 28),
@@ -188,8 +161,7 @@ def overlay_radar(frame: np.ndarray, state: SurroundState,
     h, w = frame.shape[:2]
     y0, x0 = h - size - margin, w - size - margin
     if y0 < 0 or x0 < 0:
-        return frame                        # frame too small, skip
-    # Blend so the camera image still shows through slightly.
+        return frame                        # frame too small skip
     roi = frame[y0:y0 + size, x0:x0 + size]
     cv2.addWeighted(radar, 0.85, roi, 0.15, 0.0, dst=roi)
     return frame

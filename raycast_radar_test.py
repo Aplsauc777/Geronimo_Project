@@ -1,23 +1,3 @@
-"""
-Geronimo - RAYCASTER RADAR TEST (standalone, no RL env)
-
-Spawns the robot with obstacle boxes at KNOWN bearings and distances, attaches
-a 360-degree ray scan, and draws the radar. Because you know where the boxes
-are, you can check the radar against ground truth.
-
-    python raycast_radar_test.py
-
-Obstacles (bearing measured from robot forward, +ve = left):
-    box_front   0 deg     2.0 m
-    box_left   +90 deg    1.5 m
-    box_right  -60 deg    2.5 m
-    box_back   180 deg    3.0 m
-
-Expect on the radar: red/amber wedges at roughly those bearings, everything
-else green. If the wedges are in the WRONG places, the bug is in the angle
-conversion below - surround.py's logic is already validated by test_surround.py.
-"""
-
 import argparse
 
 from isaaclab.app import AppLauncher
@@ -143,21 +123,17 @@ def main():
         sim.step()
         scan.update(sim.get_physics_dt())
 
-        # --- world hits -> robot-relative (angle, distance) -----------------
-        hits = scan.data.ray_hits_w[0].cpu().numpy()      # (num_rays, 3) world points
-        origin = scan.data.pos_w[0].cpu().numpy()         # sensor world position
-        quat = scan.data.quat_w[0].cpu().numpy()          # (w, x, y, z)
+        hits = scan.data.ray_hits_w[0].cpu().numpy()      
+        origin = scan.data.pos_w[0].cpu().numpy()         
+        quat = scan.data.quat_w[0].cpu().numpy()         
 
-        # Sensor yaw, so bearings come out ROBOT-relative rather than world-fixed.
-        # Without this the radar would stay locked to the world as the robot turns.
         yaw = math.atan2(2.0 * (quat[0] * quat[3] + quat[1] * quat[2]),
                          1.0 - 2.0 * (quat[2] ** 2 + quat[3] ** 2))
 
-        rel = hits[:, :2] - origin[:2]                    # top-down offsets
+        rel = hits[:, :2] - origin[:2]                    
         distances = np.linalg.norm(rel, axis=1)
-        angles = np.arctan2(rel[:, 1], rel[:, 0]) - yaw   # subtract robot heading
+        angles = np.arctan2(rel[:, 1], rel[:, 0]) - yaw   
 
-        # Misses come back as inf/nan - analyze_surroundings handles those.
         state = analyze_surroundings(angles, distances, max_range=6.0)
         fwd, yawcmd = choose_heading(state)
 

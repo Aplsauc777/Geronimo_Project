@@ -1,18 +1,3 @@
-"""
-Geronimo - MAZE BUILDER + RADAR DEMO
-
-Builds a maze from ASCII art as a SINGLE UsdGeom.Mesh prim, which is what
-Isaac Lab's RayCaster needs (it refuses more than one mesh path).
-
-Edit MAZE below - '#' is wall, '.' is floor, 'S' is the robot start,
-'P' is where a person stands. Then:
-
-    python maze_demo.py                # radar only
-    python maze_demo.py --camera       # radar + camera person-detection
-
-Close the window to exit.
-"""
-
 import argparse
 
 from isaaclab.app import AppLauncher
@@ -53,10 +38,7 @@ PERSON_USD = (f"{ISAAC_NUCLEUS_DIR}/People/Characters/"
               f"original_male_adult_construction_03/male_adult_construction_03.usd")
 OUT_DIR = r"C:\IsaacLab"
 
-# ---------------------------------------------------------------------------
-# THE MAZE. '#'=wall  '.'=floor  'S'=robot start  'P'=person
-# Row 0 is the far side (+X); the robot faces +X, i.e. "up" this diagram.
-# ---------------------------------------------------------------------------
+
 MAZE = [
     "#########",
     "#...#..P#",
@@ -75,8 +57,8 @@ def _box_tris(cx, cy, half, h):
     x0, x1 = cx - half, cx + half
     y0, y1 = cy - half, cy + half
     pts = [
-        (x0, y0, 0.0), (x1, y0, 0.0), (x1, y1, 0.0), (x0, y1, 0.0),   # bottom 0-3
-        (x0, y0, h), (x1, y0, h), (x1, y1, h), (x0, y1, h),           # top    4-7
+        (x0, y0, 0.0), (x1, y0, 0.0), (x1, y1, 0.0), (x0, y1, 0.0),  
+        (x0, y0, h), (x1, y0, h), (x1, y1, h), (x0, y1, h),           
     ]
     quads = [
         (0, 3, 2, 1),   # bottom
@@ -118,7 +100,6 @@ def build_maze(layout, cell=1.2, wall_h=1.2, prim_path="/World/Maze"):
             all_pts.extend(pts)
             all_tris.extend([(a + base, b + base, c2 + base) for a, b, c2 in tris])
 
-    # --- write it as a single USD Mesh -------------------------------------
     stage = omni.usd.get_context().get_stage()
     mesh = UsdGeom.Mesh.Define(stage, prim_path)
     mesh.CreatePointsAttr(Vt.Vec3fArray([Gf.Vec3f(*p) for p in all_pts]))
@@ -126,12 +107,10 @@ def build_maze(layout, cell=1.2, wall_h=1.2, prim_path="/World/Maze"):
     mesh.CreateFaceVertexIndicesAttr(
         Vt.IntArray([i for tri in all_tris for i in tri]))
 
-    # Extent helps the renderer cull correctly.
     arr = np.array(all_pts, dtype=float)
     mesh.CreateExtentAttr(Vt.Vec3fArray([
         Gf.Vec3f(*arr.min(axis=0).tolist()), Gf.Vec3f(*arr.max(axis=0).tolist())]))
 
-    # Collision, so the robot can't walk through walls later.
     UsdPhysics.CollisionAPI.Apply(mesh.GetPrim())
 
     print(f"[MAZE] {len(all_pts)} points, {len(all_tris)} triangles -> {prim_path}",
@@ -149,16 +128,13 @@ def main():
     cell, wall_h = args_cli.cell, args_cli.wall_h
     sim = SimulationContext(sim_utils.SimulationCfg(dt=1.0 / 60.0, device="cuda:0"))
 
-    # --- ground + light -----------------------------------------------------
     ground = sim_utils.GroundPlaneCfg()
     ground.func("/World/ground", ground)
     light = sim_utils.DomeLightCfg(intensity=3000.0, color=(0.9, 0.9, 0.9))
     light.func("/World/Light", light)
 
-    # --- the maze (ONE mesh - this is the whole point) ----------------------
     maze_path, cell_to_world = build_maze(MAZE, cell=cell, wall_h=wall_h)
 
-    # --- robot at 'S' -------------------------------------------------------
     starts = find_cells(MAZE, "S")
     sx, sy = cell_to_world(*starts[0]) if starts else (0.0, 0.0)
     robot_cfg = sim_utils.UsdFileCfg(usd_path=GERONIMO_USD)
@@ -166,7 +142,6 @@ def main():
     print(f"[MAZE] robot at cell {starts[0] if starts else '(0,0)'} -> ({sx:.2f}, {sy:.2f})",
           flush=True)
 
-    # --- person at 'P' ------------------------------------------------------
     people = find_cells(MAZE, "P")
     if people:
         px, py = cell_to_world(*people[0])
@@ -177,7 +152,6 @@ def main():
         print(f"[MAZE] person at ({px:.2f}, {py:.2f}) - {dist:.2f} m from robot",
               flush=True)
     
-    # --- 360 scan against the maze mesh -------------------------------------
     scan = RayCaster(RayCasterCfg(
         prim_path="/World/Robot/root",
         offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 0.15)),
@@ -187,10 +161,9 @@ def main():
             horizontal_fov_range=(-180.0, 180.0), horizontal_res=5.0),
         max_distance=12.0,
         debug_vis=True,
-        mesh_prim_paths=[maze_path],       # ONE mesh - the whole maze
+        mesh_prim_paths=[maze_path],      
     ))
 
-    # --- optional camera ----------------------------------------------------
     camera = None
     FRONT_OFFSET_DEG = -90.0
     _h = math.radians(FRONT_OFFSET_DEG) / 2
@@ -210,11 +183,10 @@ def main():
     sim.reset()
     print("[MAZE] sim.reset() OK", flush=True)
 
-    # YOLO AFTER sim.reset() - loading it earlier breaks the render pipeline.
     model = None
     if args_cli.camera:
         from ultralytics import settings as ul_settings
-        ul_settings.update({"sync": False})        # no telemetry thread
+        ul_settings.update({"sync": False})       
         from ultralytics import YOLO
         model = YOLO("yolo11n-pose.pt")
         print("[MAZE] YOLO loaded", flush=True)
@@ -227,7 +199,6 @@ def main():
             camera.update(sim.get_physics_dt())
         step += 1
 
-        # --- rays -> robot-relative bearings ---------------------------------
         hits = scan.data.ray_hits_w[0].cpu().numpy()
         origin = scan.data.pos_w[0].cpu().numpy()
         quat = scan.data.quat_w[0].cpu().numpy()
