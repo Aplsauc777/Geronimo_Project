@@ -20,6 +20,11 @@ from isaaclab.utils import configclass
 
 from . import mdp
 
+import isaaclab.terrains as terrain_gen
+
+from isaaclab.managers import CurriculumTermCfg as CurrTerm
+from isaaclab.terrains import TerrainImporterCfg
+
 GERONIMO_USD = r"C:\Users\Johnt\OneDrive\Desktop\Hexapod\assets_v3\geronimo_v3_collision_heavy.usd"
 
 FOOT_BODY_NAMES = [
@@ -122,9 +127,18 @@ GERONIMO_CFG = ArticulationCfg(
 class HexapodSceneCfg(InteractiveSceneCfg):
     """Defines the simulation world."""
 
-    ground = AssetBaseCfg(
+    terrain = TerrainImporterCfg(
         prim_path="/World/ground",
-        spawn=sim_utils.GroundPlaneCfg(size=(100.0, 100.0)),
+        terrain_type="plane",
+        collision_group=-1,
+        physics_material=sim_utils.RigidBodyMaterialCfg(
+            friction_combine_mode="multiply",
+            restitution_combine_mode="multiply",
+            static_friction=1.0,
+            dynamic_friction=1.0,
+            restitution=0.0,
+        ),
+        debug_vis=False,
     )
 
     robot: ArticulationCfg = GERONIMO_CFG.replace(
@@ -172,8 +186,8 @@ class CommandsCfg:
         debug_vis=True,
         ranges=mdp.UniformVelocityCommandCfg.Ranges(
             lin_vel_x=(0.12, 0.22),
-            lin_vel_y=(-0.03, 0.03),
-            ang_vel_z=(-0.03, 0.03),
+            lin_vel_y=(0.0, 0.0),
+            ang_vel_z=(0.0, 0.0),
         ),
     )
 
@@ -433,6 +447,15 @@ class TerminationsCfg:
         params={
             "limit_angle": 0.8,
         },
+    )
+
+    terrain_out_of_bounds = DoneTerm(
+        func=mdp.terrain_out_of_bounds,
+        params={
+            "asset_cfg": SceneEntityCfg("robot"),
+            "distance_buffer": 1.0,
+        },
+        time_out=True,
     )
 
 

@@ -23,3 +23,12 @@ gym.register(
         "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_forward_ppo_cfg:HexapodForwardPPORunnerCfg",
     },
 )
+
+gym.register(
+    id="Isaac-Hexapod-Terrain-v0",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.hexapod_mild_rough_env_cfg:HexapodMildRoughEnvCfg",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_forward_ppo_cfg:HexapodForwardPPORunnerCfg",
+    },
+)

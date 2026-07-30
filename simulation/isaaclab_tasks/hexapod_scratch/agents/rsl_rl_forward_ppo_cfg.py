@@ -8,9 +8,9 @@ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlPpoActorCriticCfg, R
 class HexapodForwardPPORunnerCfg(RslRlOnPolicyRunnerCfg):
     """here is where I define the PPO config for geronimo"""
 
-    num_steps_per_env = 36
-    max_iterations = 1500
-    save_interval = 50
+    num_steps_per_env = 24
+    max_iterations = 300
+    save_interval = 25
     experiment_name = "geronimo_forward_ppo"
     run_name = ""
     empirical_normalization = False
@@ -38,7 +38,7 @@ class HexapodForwardPPORunnerCfg(RslRlOnPolicyRunnerCfg):
         entropy_coef=0.005,
         num_learning_epochs=5,
         num_mini_batches=4,
-        learning_rate=1.0e-3,
+        learning_rate=1.0e-4,
         schedule="adaptive",
         gamma=0.99,
         lam=0.95,
